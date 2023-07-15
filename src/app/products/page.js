@@ -1,4 +1,9 @@
+import { ListProducts } from "../../../components";
+
 const Products = () => {
-  return <div>List of products</div>;
+  return <div>
+    
+    <ListProducts/>
+  </div>;
 };
 export default Products;
