@@ -52,7 +52,7 @@ const ArrayProducts = [
 ];
 const ListProducts = () => {
   return (
-    <div className="bg-[#f2f2f2] text-black grid grid-cols-3">
+    <div className="grid grid-cols-[repeat(auto-fill,_minmax(300px,_1fr))] w-[100%]">
       {ArrayProducts.map((p) => (
         <Product
         key={p.id}
