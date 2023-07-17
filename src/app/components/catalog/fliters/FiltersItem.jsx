@@ -1,9 +1,14 @@
-import React from 'react'
+import React from "react";
 
-const FiltersItem = () => {
+const FiltersItem = ({ name, label }) => {
   return (
-    <div>FiltersItem</div>
-  )
-}
+    <>
+      <div className="flex items-center">
+        <input type="radio" name={name}></input>
+        <label>{label}</label>
+      </div>
+    </>
+  );
+};
 
-export default FiltersItem
+export default FiltersItem;
