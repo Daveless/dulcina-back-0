@@ -14,7 +14,7 @@ const Header = () => {
       </Link>
       <div className="flex flex-row justify-around md:hidden">
         <button>
-          <i class="bx bx-search text-2xl"></i>
+          <i className="bx bx-search text-2xl"></i>
         </button>
         <button>
           <i className="bx bx-cart text-2xl"></i>
