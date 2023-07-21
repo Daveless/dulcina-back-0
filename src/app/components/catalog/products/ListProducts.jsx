@@ -1,4 +1,9 @@
+"use client"
+
+import { useDispatch, useSelector } from "react-redux";
 import Product from "./Product";
+import { useEffect } from "react";
+import { fetchProducts } from "@/redux/features/product-slice";
 
 const ArrayProducts = [
   {
@@ -51,9 +56,17 @@ const ArrayProducts = [
   },
 ];
 const ListProducts = () => {
+
+  const dispatch = useDispatch()
+  const products = useSelector(state=>state.productsReducer.allProducts)
+
+  useEffect(()=>{
+    dispatch(fetchProducts())
+  },[])
+
   return (
     <div className="grid grid-cols-[repeat(auto-fill,_minmax(300px,_1fr))] w-[100%]">
-      {ArrayProducts.map((p) => (
+      {products?.map((p) => (
         <Product
         key={p.id}
         id={p.id}
