@@ -54,9 +54,11 @@ export const filter = createSlice({
       };
     },
     filterAll: (state, action) => {
-      console.log(action.payload);
+      console.log(state.value.byGenere);
+      console.log(state.value.byCategory);
       return {
         value: {
+          ...state.value,
           filtered: computeFilteredData(
             action.payload,
             state.value.byCategory,
