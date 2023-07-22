@@ -18,7 +18,7 @@ const initialState = {
     filtered: [],
     byGenere: "",
     byCategory: "",
-    byPrice: "",
+    byPrice: [3,50],
   },
 };
 

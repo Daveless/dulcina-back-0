@@ -118,6 +118,7 @@ const ArrayProducts = [
 const Filters = () => {
   const dispatch = useDispatch();
   const filtered = useSelector((state) => state.filterReducer.value.filtered);
+  const byPrice = useSelector((state) => state.filterReducer.value.byPrice);
   console.log(filtered);
 
   const onChangeCategory = (e) => {
@@ -129,13 +130,9 @@ const Filters = () => {
     dispatch(filterAll(ArrayProducts));
   };
   const onChangePrice = (e) => {
-    dispatch(ChangePriceInput(e.target.value));
+    dispatch(ChangePriceInput(e));
     dispatch(filterAll(ArrayProducts));
   };
-
-  const MIN = 3;
-  const MAX = 50;
-  const [values, setValues] = useState([MIN, MAX]);
 
   return (
     <>
@@ -163,13 +160,13 @@ const Filters = () => {
         <h2>Precio</h2>
         <ReactSlider
           className="slider"
-          onChange={setValues}
-          value={values}
-          min={MIN}
-          max={MAX}
+          onChange={onChangePrice}
+          value={byPrice}
+          min={3}
+          max={50}
         />
         <h1>
-          {values[0]} - {values[1]}
+          {byPrice[0]} - {byPrice[1]}
         </h1>
       </div>
     </>
