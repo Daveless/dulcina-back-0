@@ -119,7 +119,7 @@ const Filters = () => {
   const dispatch = useDispatch();
   const filtered = useSelector((state) => state.filterReducer.value.filtered);
   const byPrice = useSelector((state) => state.filterReducer.value.byPrice);
-  console.log(filtered);
+  console.log(byPrice);
 
   const onChangeCategory = (e) => {
     dispatch(ChangeCategoryInput(e.target.value));

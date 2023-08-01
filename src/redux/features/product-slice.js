@@ -1,6 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+
+const { BACK_URL } = process.env
+
 const initialState = {
   allProducts: [],
   error: "",
