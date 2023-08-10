@@ -1,6 +1,7 @@
 export { default as Button } from './buttons/Button';
 export { default as ButtonContainer } from './buttons/ButtonContainer';
 export { default as CallButton } from './buttons/CallButton';
+export { default as StockButtons } from './buttons/StockButtons';
 export { default as Filters } from './catalog/fliters/Filters';
 export { default as FiltersItem } from './catalog/fliters/FiltersItem';
 export { default as ListProducts } from './catalog/products/ListProducts';
