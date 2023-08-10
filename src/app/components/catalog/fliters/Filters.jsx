@@ -55,6 +55,7 @@ const ArrayProducts = [
     image: "https://dulcina.org/imgs/producto9.png",
     price: 16.99,
     category: "Arreglos",
+    genere: "Hombre"
   },
   {
     id: 2,
@@ -62,6 +63,7 @@ const ArrayProducts = [
     image: "https://dulcina.org/imgs/producto9.png",
     price: 16.99,
     category: "Arreglos",
+    genere: "Niño"
   },
   {
     id: 3,
@@ -69,6 +71,7 @@ const ArrayProducts = [
     image: "https://dulcina.org/imgs/producto9.png",
     price: 16.99,
     category: "Casas",
+    genere: "Hombre"
   },
   {
     id: 4,
@@ -76,6 +79,7 @@ const ArrayProducts = [
     image: "https://dulcina.org/imgs/producto9.png",
     price: 16.99,
     category: "Bombones",
+    genere: "Niño"
   },
   {
     id: 5,
@@ -83,6 +87,7 @@ const ArrayProducts = [
     image: "https://dulcina.org/imgs/producto9.png",
     price: 16.99,
     category: "Bombones",
+    genere: "Mujer"
   },
   {
     id: 6,
@@ -90,6 +95,7 @@ const ArrayProducts = [
     image: "https://dulcina.org/imgs/producto9.png",
     price: 16.99,
     category: "Casas",
+    genere: "Mujer"
   },
   {
     id: 7,
@@ -97,6 +103,7 @@ const ArrayProducts = [
     image: "https://dulcina.org/imgs/producto9.png",
     price: 16.99,
     category: "Arreglos",
+    genere: "Niño"
   },
   {
     id: 8,
@@ -104,22 +111,28 @@ const ArrayProducts = [
     image: "https://dulcina.org/imgs/producto9.png",
     price: 16.99,
     category: "Arreglos",
+    genere: "Hombre"
   },
 ];
 
 const Filters = () => {
   const dispatch = useDispatch();
   const filtered = useSelector((state) => state.filterReducer.value.filtered);
-  console.log(filtered);
+  const byPrice = useSelector((state) => state.filterReducer.value.byPrice);
+  console.log(byPrice);
 
-  const onChange = (e) => {
+  const onChangeCategory = (e) => {
     dispatch(ChangeCategoryInput(e.target.value));
     dispatch(filterAll(ArrayProducts));
   };
-
-  const MIN = 3;
-  const MAX = 50;
-  const [values, setValues] = useState([MIN, MAX]);
+  const onChangeGenere = (e) => {
+    dispatch(ChangeGenereInput(e.target.value));
+    dispatch(filterAll(ArrayProducts));
+  };
+  const onChangePrice = (e) => {
+    dispatch(ChangePriceInput(e));
+    dispatch(filterAll(ArrayProducts));
+  };
 
   return (
     <>
@@ -129,25 +142,31 @@ const Filters = () => {
           <FileList
             key={c.id}
             id={c.id}
-            onChange={onChange}
+            onChange={onChangeCategory}
             label={c.label}
             name={c.name}
           />
         ))}
         <h2>Genero</h2>
         {ArrayGenere.map((c) => (
-          <FileList key={c.id} id={c.id} label={c.label} name={c.name} />
+          <FileList
+            key={c.id}
+            id={c.id}
+            label={c.label}
+            onChange={onChangeGenere}
+            name={c.name}
+          />
         ))}
         <h2>Precio</h2>
         <ReactSlider
           className="slider"
-          onChange={setValues}
-          value={values}
-          min={MIN}
-          max={MAX}
+          onChange={onChangePrice}
+          value={byPrice}
+          min={3}
+          max={50}
         />
         <h1>
-          {values[0]} - {values[1]}
+          {byPrice[0]} - {byPrice[1]}
         </h1>
       </div>
     </>

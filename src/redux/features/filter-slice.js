@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const computeFilteredData = (
   products,
@@ -18,7 +18,7 @@ const initialState = {
     filtered: [],
     byGenere: "",
     byCategory: "",
-    byPrice: "",
+    byPrice: [3,50],
   },
 };
 
@@ -54,9 +54,11 @@ export const filter = createSlice({
       };
     },
     filterAll: (state, action) => {
-      console.log(action.payload);
+      console.log(state.value.byGenere);
+      console.log(state.value.byCategory);
       return {
         value: {
+          ...state.value,
           filtered: computeFilteredData(
             action.payload,
             state.value.byCategory,
