@@ -19,22 +19,28 @@ const FileInput = () => {
     data.append("upload_preset", "dulcina");
     setLoading(true);
     console.log(data);
-    const res = await fetch(`https://api.cloudinary.com/v1_1/dccvupp4x/image/upload`, {
-      method: "POST",
-      body: data,
-    }).then(r=>r.json());
+    const res = await fetch(
+      `https://api.cloudinary.com/v1_1/dccvupp4x/image/upload`,
+      {
+        method: "POST",
+        body: data,
+      }
+    ).then((r) => r.json());
     console.log(res);
-    setImage(res.secure_url); 
+    setImage(res.secure_url);
     setLoading(false);
   };
 
   return (
-    <input
-      type="file"
-      name="file"
-      onChange={uploadImage}
-      placeholder="Sube tu imagen aqui!"
-    />
+    <div className="flex flex-col">
+      <label className="text-[22px] text-[#696969]">Imagen</label>
+      <input
+        type="file"
+        name="file"
+        onChange={uploadImage}
+        placeholder="Sube tu imagen aqui!"
+      />
+    </div>
   );
 };
 
