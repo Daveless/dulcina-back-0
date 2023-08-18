@@ -10,4 +10,5 @@ export { default as FileInput } from './form/FileInput';
 export { default as FormContainer } from './form/FormContainer';
 export { default as FormInput } from './form/FormInput';
 export { default as SelectInput } from './form/SelectInput';
-export { default as Header } from './layoutComponents/Header';
+export * from './layouts/LandingLayout';
+export * from './ui';

@@ -1,6 +1,9 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
+import { Searchbar } from "..";
+import { AiOutlineHeart } from "react-icons/ai";
+import { BsCart2 } from "react-icons/bs";
 
 const Header = () => {
   const [isShown, setIsShown] = useState(false);
@@ -8,7 +11,7 @@ const Header = () => {
     setIsShown(!isShown);
   };
   return (
-    <header className="grid grid-cols-2 md:grid-cols-[30%_70%] md:px-10 p-3 z-40">
+    <header className="grid grid-cols-2 md:grid-cols-[31%_69%] md:px-[130px] p-2 z-40">
       <Link className="flex items-center" href="/">
         <h1 className="text-bold text-xl">Dulcina</h1>
       </Link>
@@ -24,25 +27,24 @@ const Header = () => {
         </button>
       </div>
       <div
-        className={`absolute md:relative md:flex top-[50px] md:top-0 md:justify-around items-center bg-gray-200 md:bg-inherit w-full left-0 text-center text-black p-5 z-30 md:z-60 ${
+        className={`absolute md:relative md:flex top-[50px] md:top-0 md:justify-between items-center bg-[#ffffff] md:bg-inherit w-full left-0 text-center text-black py-5  z-30 md:z-60 ${
           isShown ? "flex flex-col md:flex" : "hidden md:flex"
         }`}
       >
         <Link className="my-3 md:my-0" href="/">
-          Inicio
+          Catalogo
         </Link>
         <Link className="my-3 md:my-0" href="/products">
-          Tienda
+          Contacto
         </Link>
         <Link className="my-3 md:my-0" href="/login">
-          Iniciar Sesión
+          Nosotros
         </Link>
-        <Link className="my-3 md:my-0" href="/register">
-          Registrarse
-        </Link>
-        <Link className="my-3 md:my-0" href="/profile">
-          Mi Perfil
-        </Link>
+        <Searchbar />
+        <div className="flex">
+          <AiOutlineHeart size="28px" className="ml-[10px] cursor-pointer" />
+          <BsCart2 size="28px" className="ml-[10px] cursor-pointer" />
+        </div>
       </div>
     </header>
   );
