@@ -58,13 +58,13 @@ const ArrayProducts = [
 const ListProducts = () => {
 
   const dispatch = useDispatch()
-  const products = useSelector(state=>state.productsReducer.allProducts)
+  const products = useSelector(state=>state.productsReducer.allProducts.products)
 
   useEffect(()=>{
     dispatch(fetchProducts())
   },[])
-
-  return (
+  if(products?.length)
+   return (
     <div className="grid grid-cols-[repeat(auto-fill,_minmax(300px,_1fr))] w-[100%]">
       {products?.map((p) => (
         <Product
