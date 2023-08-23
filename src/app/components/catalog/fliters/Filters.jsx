@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import FileList from "./FiltersItem";
+import FiltersItem from "./FiltersItem";
 import ReactSlider from "react-slider";
 import "./filters.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -30,21 +30,31 @@ const ArrayCategories = [
     label: "Casas",
   },
 ];
-const ArrayGenere = [
+const ArrayFestivities = [
   {
     id: 1,
-    name: "genero",
-    label: "Hombre",
+    name: "festividad",
+    label: "Día de la mujer",
   },
   {
     id: 2,
-    name: "genero",
-    label: "Mujer",
+    name: "festividad",
+    label: "Día del padre",
   },
   {
     id: 3,
-    name: "genero",
-    label: "Niño",
+    name: "festividad",
+    label: "Día de la niño",
+  },
+  {
+    id: 4,
+    name: "festividad",
+    label: "Día de la madre",
+  },
+  {
+    id: 5,
+    name: "festividad",
+    label: "Navidad",
   },
 ];
 
@@ -55,7 +65,7 @@ const ArrayProducts = [
     image: "https://dulcina.org/imgs/producto9.png",
     price: 16.99,
     category: "Arreglos",
-    genere: "Hombre"
+    genere: "Hombre",
   },
   {
     id: 2,
@@ -63,7 +73,7 @@ const ArrayProducts = [
     image: "https://dulcina.org/imgs/producto9.png",
     price: 16.99,
     category: "Arreglos",
-    genere: "Niño"
+    genere: "Niño",
   },
   {
     id: 3,
@@ -71,7 +81,7 @@ const ArrayProducts = [
     image: "https://dulcina.org/imgs/producto9.png",
     price: 16.99,
     category: "Casas",
-    genere: "Hombre"
+    genere: "Hombre",
   },
   {
     id: 4,
@@ -79,7 +89,7 @@ const ArrayProducts = [
     image: "https://dulcina.org/imgs/producto9.png",
     price: 16.99,
     category: "Bombones",
-    genere: "Niño"
+    genere: "Niño",
   },
   {
     id: 5,
@@ -87,7 +97,7 @@ const ArrayProducts = [
     image: "https://dulcina.org/imgs/producto9.png",
     price: 16.99,
     category: "Bombones",
-    genere: "Mujer"
+    genere: "Mujer",
   },
   {
     id: 6,
@@ -95,7 +105,7 @@ const ArrayProducts = [
     image: "https://dulcina.org/imgs/producto9.png",
     price: 16.99,
     category: "Casas",
-    genere: "Mujer"
+    genere: "Mujer",
   },
   {
     id: 7,
@@ -103,7 +113,7 @@ const ArrayProducts = [
     image: "https://dulcina.org/imgs/producto9.png",
     price: 16.99,
     category: "Arreglos",
-    genere: "Niño"
+    genere: "Niño",
   },
   {
     id: 8,
@@ -111,7 +121,7 @@ const ArrayProducts = [
     image: "https://dulcina.org/imgs/producto9.png",
     price: 16.99,
     category: "Arreglos",
-    genere: "Hombre"
+    genere: "Hombre",
   },
 ];
 
@@ -119,7 +129,7 @@ const Filters = () => {
   const dispatch = useDispatch();
   const filtered = useSelector((state) => state.filterReducer.value.filtered);
   const byPrice = useSelector((state) => state.filterReducer.value.byPrice);
-  console.log(byPrice);
+  //console.log(byPrice);
 
   const onChangeCategory = (e) => {
     dispatch(ChangeCategoryInput(e.target.value));
@@ -136,10 +146,14 @@ const Filters = () => {
 
   return (
     <>
-      <div className="flex flex-col w-[500px]">
-        <h2>Categorias</h2>
-        {ArrayCategories.map((c) => (
-          <FileList
+      <div className="hidden md:flex flex-col w-[280px] ">
+        <h2 className="font-extrabold text-[#222222] text-[30px]">Festividad</h2>
+        <div
+          className="w-[100%]  mb-[10px]"
+          style={{ borderBottom: "1.5px solid #CFCFCF" }}
+        />
+        {ArrayFestivities.map((c) => (
+          <FiltersItem
             key={c.id}
             id={c.id}
             onChange={onChangeCategory}
@@ -147,17 +161,13 @@ const Filters = () => {
             name={c.name}
           />
         ))}
-        <h2>Genero</h2>
-        {ArrayGenere.map((c) => (
-          <FileList
-            key={c.id}
-            id={c.id}
-            label={c.label}
-            onChange={onChangeGenere}
-            name={c.name}
-          />
-        ))}
-        <h2>Precio</h2>
+
+        <h2 className="font-extrabold text-[#222222] text-[30px]">Precio</h2>
+        <div
+          className="w-[100%] mb-[40px] "
+          style={{ borderBottom: "1.5px solid #CFCFCF" }}
+        />
+
         <ReactSlider
           className="slider"
           onChange={onChangePrice}
@@ -165,9 +175,24 @@ const Filters = () => {
           min={3}
           max={50}
         />
-        <h1>
+        <p>
           {byPrice[0]} - {byPrice[1]}
-        </h1>
+        </p>
+        <h2 className="font-extrabold text-[#222222] text-[30px]">Categorias</h2>
+        <div
+          className="w-[100%] mb-[10px] "
+          style={{ borderBottom: "1.5px solid #CFCFCF" }}
+        />
+
+        {ArrayCategories.map((c) => (
+          <FiltersItem
+            key={c.id}
+            id={c.id}
+            onChange={onChangeCategory}
+            label={c.label}
+            name={c.name}
+          />
+        ))}
       </div>
     </>
   );

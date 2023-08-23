@@ -1,13 +1,21 @@
-import { Filters, ListProducts } from "../components";
+import { Filters, Layout, ListProducts, UxProducts } from "../components";
 
 const Products = () => {
   return (
-    <div className="bg-[#f2f2f2] text-black ">
-      <div className="flex">
-        <Filters />
-        <ListProducts />
-      </div>
-    </div>
+    <>
+      <Layout pageDescription={"Tienda online"} title={"Dulcina"}>
+      <div className="min-h-screen">
+
+        <div className=" text-black ">
+          <UxProducts/>
+          <div className="flex w-[100%] justify-between">
+            <Filters />
+            <ListProducts />
+          </div>
+        </div>
+        </div>
+      </Layout>
+    </>
   );
 };
 export default Products;
