@@ -24,8 +24,8 @@ input[type=radio] {
     transform: scale(1);
   }
   input[type=radio]:checked{
-    background-color:   #0075FF;
-    border: 2px solid #0075FF;
+    background-color:   #343434;
+    border: 2px solid #343434;
   }
   .range-slider {
     height: 5px;
@@ -39,7 +39,7 @@ input[type=radio] {
     right: 30%;
     position: absolute;
     border-radius: 5px;
-    background-color: #1b53c0;
+    background-color: #343434;
   }
   range-input {
     position: relative;
@@ -58,7 +58,7 @@ input[type=radio] {
     height: 20px;
     width: 20px;
     border-radius: 50%;
-    border: 3px solid #1b53c0;
+    border: 3px solid #343434;
     background-color: #fff;
     pointer-events: auto;
     -webkit-appearance: none;
@@ -67,7 +67,7 @@ input[type=radio] {
     height: 15px;
     width: 15px;
     border-radius: 50%;
-    border: 3px solid #1b53c0;
+    border: 3px solid #343434;
     background-color: #fff;
     pointer-events: auto;
     -moz-appearance: none;
@@ -98,10 +98,12 @@ input[type=radio] {
   }
   
   .slider .thumb {
+    position: relative;
+    bottom: -10px;
     width: 23px;
     height: 23px;
     cursor: pointer;
     background: #fff;
     border-radius: 50%;
-    border: 2px solid #275efe;
+    border: 3.5px solid #343434;
   }

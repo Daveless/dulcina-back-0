@@ -1,5 +1,5 @@
 import { HiOutlineArrowLongRight } from "react-icons/hi2";
-import { ImageItem, LandingLayout } from "./components";
+import { IgSection, ImageItem, LandingLayout } from "./components";
 import Link from "next/link";
 
 export default function Home() {
@@ -47,6 +47,7 @@ export default function Home() {
           />
         </div>
       </div>
+      <IgSection/>
     </>
   );
 }
