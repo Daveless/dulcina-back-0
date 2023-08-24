@@ -2,8 +2,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { AiOutlineHeart } from "react-icons/ai";
-import { BsCart2 } from "react-icons/bs";
-import { Searchbar } from ".";
+import { CartButton, Searchbar } from ".";
 
 const LandingNavbar = () => {
   const [isShown, setIsShown] = useState(false);
@@ -43,7 +42,7 @@ const LandingNavbar = () => {
         <Searchbar />
         <div className="flex">
           <AiOutlineHeart size="28px" className="ml-[10px] cursor-pointer" />
-          <BsCart2 size="28px" className="ml-[10px] cursor-pointer" />
+          <CartButton />
         </div>
       </div>
     </div>
