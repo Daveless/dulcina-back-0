@@ -10,7 +10,7 @@ export default function Home() {
       </LandingLayout>
       <div className="flex flex-col justify-center items-center h-screen">
         <div className="mb-[15px] items-center flex w-[900px] justify-between">
-          <p className="text-[35px] font-serif font-bold">
+          <p className="text-[35px] text-[#272727] font-serif font-bold">
             Categorias Populares
           </p>
           <Link href="/products">
