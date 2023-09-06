@@ -10,7 +10,7 @@ const initialState = {
 };
 export const fetchProducts = createAsyncThunk("product/fetchProducts", async () => {
   const res = await axios.get(
-    "https://dulcina-back-node.onrender.com/products"
+    "https://dulcina-backend.onrender.com/products"
   );
   return res.data;
 });
