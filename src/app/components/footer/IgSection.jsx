@@ -8,7 +8,7 @@ const IgSection = () => {
         h={"300px"}
         w={"283.4px"}
         img={
-          "https://res.cloudinary.com/dccvupp4x/image/upload/v1692385868/dulcina/czy29ygswl1uilg5mtx9.jpg"
+          "https://res.cloudinary.com/dccvupp4x/image/upload/v1693177276/dulcina/landing/ogdffwvmkpc15ulczulx.jpg"
         }
       >
         <BsInstagram size={"60px"}/>
@@ -17,7 +17,7 @@ const IgSection = () => {
         h={"300px"}
         w={"283.4px"}
         img={
-          "https://res.cloudinary.com/dccvupp4x/image/upload/v1692334970/dulcina/ppubzayebcdj2rp1vzqu.jpg"
+          "https://res.cloudinary.com/dccvupp4x/image/upload/v1693177154/dulcina/landing/ssnsysr3zhjkvnqi4nhz.jpg"
         }
       >
         <BsInstagram size={"60px"}/>
@@ -26,7 +26,7 @@ const IgSection = () => {
         h={"300px"}
         w={"283.4px"}
         img={
-          "https://res.cloudinary.com/dccvupp4x/image/upload/v1692386303/dulcina/ewrs1zlasmvlircnzql7.jpg"
+          "https://res.cloudinary.com/dccvupp4x/image/upload/v1693176623/dulcina/landing/bcfxv3pcbhtd2ccpblad.jpg"
         }
       >
         <BsInstagram size={"60px"}/>
@@ -35,7 +35,7 @@ const IgSection = () => {
         h={"300px"}
         w={"283.4px"}
         img={
-          "https://res.cloudinary.com/dccvupp4x/image/upload/f_auto,q_auto/v1/dulcina/mxue4vna37rvenilkmr0"
+          "https://res.cloudinary.com/dccvupp4x/image/upload/v1693176863/dulcina/landing/euu3mafsx88kwzftyrsx.jpg"
         }
       >
         <BsInstagram size={"60px"}/>
@@ -44,7 +44,7 @@ const IgSection = () => {
         h={"300px"}
         w={"283.4px"}
         img={
-          "https://res.cloudinary.com/dccvupp4x/image/upload/f_auto,q_auto/v1/dulcina/msqxrzugjgtnuxy0ihcl"
+          "https://res.cloudinary.com/dccvupp4x/image/upload/v1693177011/dulcina/landing/fbkfe6q4mnaffutev9md.jpg"
         }
       >
         <BsInstagram size={"60px"}/>

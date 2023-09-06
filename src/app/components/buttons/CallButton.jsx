@@ -1,8 +1,8 @@
 "use client"
-const CallButton = ({onClick}) => {
+const CallButton = ({onClick, content}) => {
   return (
     <button onClick={onClick} type='button' className='bg-[#E60023] font-bold text-[#ffffff] w-[100%] h-[55px] rounded-xl'>
-        <p>Añadir al carrito</p>
+        <p>{content}</p>
     </button>
   )
 }
