@@ -1,7 +1,8 @@
-import {
-  Layout,
-  ProductDetails
-} from "@/app/components";
+"use client";
+import { Layout, ProductDetails } from "@/app/components";
+import axios from "axios";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const Product = ({ params }) => {
   const { id } = params;
@@ -11,17 +12,17 @@ const Product = ({ params }) => {
     "Feliz Cumpleaños",
     "Personalizado",
   ];
+  const [product, setProduct] = useState();
 
-  const product = {
-    name:"Buzo Puma Classics Oversized",
-    description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-    options:options,
-    price:"20.50"
-  }
-
+  useEffect(() => {
+    axios
+      .get(`https://dulcina-backend.onrender.com/products/${id}`)
+      .then((res) => setProduct(res.data.product))
+      .catch((err) => console.error(err));
+  }, []);
   return (
     <Layout>
-      <ProductDetails product={product}/>
+      <ProductDetails product={product} />
     </Layout>
   );
 };

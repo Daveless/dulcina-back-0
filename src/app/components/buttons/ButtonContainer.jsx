@@ -1,14 +1,13 @@
-import Button from './Button'
+import Button from "./Button";
 
-const ButtonContainer = ({listOfButtons}) => {
+const ButtonContainer = ({ listOfButtons }) => {
   return (
     <div>
-        {listOfButtons.map(button=> {
-            return <Button key={button} content={button}/>
-        })}
-        
+      {listOfButtons?.map((button) => {
+        return <Button key={button} content={button} />;
+      })}
     </div>
-  )
-}
+  );
+};
 
-export default ButtonContainer
+export default ButtonContainer;
