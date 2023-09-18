@@ -1,5 +1,5 @@
 import { HiOutlineArrowLongRight } from "react-icons/hi2";
-import { IgSection, ImageItem, LandingLayout, Slider } from "./components";
+import { IgSection, ImageItem, LandingLayout} from "./components";
 import Link from "next/link";
 
 export default function Home() {
