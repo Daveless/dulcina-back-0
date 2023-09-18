@@ -1,5 +1,5 @@
 import { HiOutlineArrowLongRight } from "react-icons/hi2";
-import { IgSection, ImageItem, LandingLayout } from "./components";
+import { IgSection, ImageItem, LandingLayout} from "./components";
 import Link from "next/link";
 
 export default function Home() {
@@ -45,9 +45,9 @@ export default function Home() {
               "https://res.cloudinary.com/dccvupp4x/image/upload/v1693177570/dulcina/landing/items/mldjjjumtilsyhlmno68.jpg"
             }
           />
-        </div>
+        </div>        
       </div>
-      <IgSection/>
+      <IgSection />
     </>
   );
 }

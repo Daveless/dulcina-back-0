@@ -146,53 +146,59 @@ const Filters = () => {
 
   return (
     <>
-      <div className="hidden md:flex flex-col w-[280px] ">
-        <h2 className="font-extrabold text-[#222222] text-[30px]">Festividad</h2>
-        <div
-          className="w-[100%]  mb-[10px]"
-          style={{ borderBottom: "1.5px solid #CFCFCF" }}
-        />
-        {ArrayFestivities.map((c) => (
-          <FiltersItem
-            key={c.id}
-            id={c.id}
-            onChange={onChangeCategory}
-            label={c.label}
-            name={c.name}
+      <div className="w-[365px] flex justify-end">
+        <div className="hidden md:flex flex-col w-[280px] ">
+          <h2 className="font-extrabold text-[#222222] text-[30px]">
+            Festividad
+          </h2>
+          <div
+            className="w-[100%]  mb-[10px]"
+            style={{ borderBottom: "1.5px solid #CFCFCF" }}
           />
-        ))}
+          {ArrayFestivities.map((c) => (
+            <FiltersItem
+              key={c.id}
+              id={c.id}
+              onChange={onChangeCategory}
+              label={c.label}
+              name={c.name}
+            />
+          ))}
 
-        <h2 className="font-extrabold text-[#222222] text-[30px]">Precio</h2>
-        <div
-          className="w-[100%] mb-[40px] "
-          style={{ borderBottom: "1.5px solid #CFCFCF" }}
-        />
-
-        <ReactSlider
-          className="slider"
-          onChange={onChangePrice}
-          value={byPrice}
-          min={3}
-          max={50}
-        />
-        <p>
-          {byPrice[0]} - {byPrice[1]}
-        </p>
-        <h2 className="font-extrabold text-[#222222] text-[30px]">Categorias</h2>
-        <div
-          className="w-[100%] mb-[10px] "
-          style={{ borderBottom: "1.5px solid #CFCFCF" }}
-        />
-
-        {ArrayCategories.map((c) => (
-          <FiltersItem
-            key={c.id}
-            id={c.id}
-            onChange={onChangeCategory}
-            label={c.label}
-            name={c.name}
+          <h2 className="font-extrabold text-[#222222] text-[30px]">Precio</h2>
+          <div
+            className="w-[100%] mb-[40px] "
+            style={{ borderBottom: "1.5px solid #CFCFCF" }}
           />
-        ))}
+
+          <ReactSlider
+            className="slider"
+            onChange={onChangePrice}
+            value={byPrice}
+            min={3}
+            max={50}
+          />
+          <p>
+            {byPrice[0]} - {byPrice[1]}
+          </p>
+          <h2 className="font-extrabold text-[#222222] text-[30px]">
+            Categorias
+          </h2>
+          <div
+            className="w-[100%] mb-[10px] "
+            style={{ borderBottom: "1.5px solid #CFCFCF" }}
+          />
+
+          {ArrayCategories.map((c) => (
+            <FiltersItem
+              key={c.id}
+              id={c.id}
+              onChange={onChangeCategory}
+              label={c.label}
+              name={c.name}
+            />
+          ))}
+        </div>
       </div>
     </>
   );
