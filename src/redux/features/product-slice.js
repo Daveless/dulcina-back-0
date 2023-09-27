@@ -1,8 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-
-const { BACK_URL } = process.env
+const { BACK_URL } = process.env;
 
 const initialState = {
   postedProduct:{},
@@ -37,7 +36,7 @@ export const products = createSlice({
   initialState,  
   extraReducers: (builder) => {
     builder.addCase(fetchProducts.fulfilled, (state, action) => {
-      state.allProducts = action.payload
+      state.allProducts = action.payload;
     });
     builder.addCase(fetchProducts.rejected, (state, action) => {
       state.error = action.payload
