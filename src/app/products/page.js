@@ -3,7 +3,7 @@ import { Filters, Layout, ListProducts, UxProducts } from "../components";
 const Products = () => {
   return (
     <>
-      <Layout pageDescription={"Tienda online"} title={"Dulcina"}>
+      <Layout padding={true}  pageDescription={"Tienda online"} title={"Dulcina"}>
       <div className="min-h-screen">
 
         <div className=" text-black ">

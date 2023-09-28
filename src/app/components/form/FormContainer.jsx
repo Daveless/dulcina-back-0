@@ -1,23 +1,105 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import FileInput from "./FileInput";
-import FormInput from "./FormInput";
 import SelectInput from "./SelectInput";
+import { FormInput } from ".";
+import { postProduct } from "@/redux/features/product-slice";
+import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
 
 const FormContainer = () => {
+  const token = useSelector((state) => state.userReducer.token);
+  const role = useSelector((state) => state.userReducer.role);
+
+  const dispatch = useDispatch();
+
+  const rout = useRouter();
+
+  console.log(role, token);
+  useEffect(() => {
+    if (role != "admin") {
+      rout.push("/login");
+    }
+  }, [role]);
+  const [image, setImage] = useState("");
+  const [input, setInput] = useState({
+    name: "",
+    price: "",
+    description: "",
+    highlighDate: "",
+  });
+  const onChange = (e, inputName) => {
+    setInput({
+      ...input,
+      [inputName]: e.target.value,
+    });
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    console.log("asd");
+    let body = {
+      ...input,
+      image,
+      token
+    };
+    dispatch(postProduct(body));
+  };
+
   return (
     <>
-      <div className="grid grid-cols-2 pl-[110px] pr-[110px] gap-10">
+      <form
+        onSubmit={onSubmit}
+        className="grid grid-cols-2 pl-[110px] pr-[110px] gap-10"
+      >
         <div>
-          <FormInput type={"text"} placeholder={"Arreglo 1"} label={"Nombre"} />
-          <FormInput type={"text"} placeholder={"$80"} label={"Precio"} />
-          <FileInput />
+          <FormInput
+            onChange={onChange}
+            input={input}
+            inputName={"name"}
+            type={"text"}
+            placeholder={"Arreglo 1"}
+            label={"Nombre"}
+          />
+          <FormInput
+            onChange={onChange}
+            input={input}
+            inputName={"price"}
+            type={"number"}
+            placeholder={"$80"}
+            label={"Precio"}
+          />
+          <FileInput image={image} setImage={setImage} />
         </div>
         <div>
-          <SelectInput firstOption={"Seleccionar"} label={"Festividad"} />
+          <FormInput
+            onChange={onChange}
+            input={input}
+            inputName={"highlighDate"}
+            className={"h-[150px] "}
+            type={"text"}
+            placeholder={"12:12:2020"}
+            label={"Fecha"}
+          />
           <SelectInput firstOption={"Seleccionar"} label={"Categoría"} />
-          <FormInput className={"h-[150px] "} size={"paragraph"} type={"text"} placeholder={"Lorem ipsum dolor sit amet"} label={"Descripción"} />
+          <FormInput
+            onChange={onChange}
+            input={input}
+            inputName={"description"}
+            className={"h-[150px] "}
+            size={"paragraph"}
+            type={"text"}
+            placeholder={"Lorem ipsum dolor sit amet"}
+            label={"Descripción"}
+          />
         </div>
-      </div>
+        <button
+          type="submit"
+          className="bg-[#E60023] font-bold text-[#ffffff] w-[100%] h-[55px] rounded-xl"
+        >
+          Crear producto
+        </button>
+      </form>
     </>
   );
 };

@@ -5,10 +5,9 @@ import "dotenv/config";
 
 const { CLOUDINARY_NAME } = process.env;
 
-const FileInput = () => {
+const FileInput = ({image,setImage}) => {
   console.log(CLOUDINARY_NAME);
 
-  const [image, setImage] = useState("");
   const [loading, setLoading] = useState(false);
 
   const uploadImage = async (e) => {
@@ -25,7 +24,8 @@ const FileInput = () => {
         method: "POST",
         body: data,
       }
-    ).then((r) => r.json());
+    ).then((r) => r.json())
+    .catch(err=> console.log(err))
     console.log(res);
     setImage(res.secure_url);
     setLoading(false);

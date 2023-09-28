@@ -12,7 +12,7 @@ const Navbar = () => {
   return (
     <div className="grid grid-cols-2 md:grid-cols-[31%_69%] md:h-[70px] justify-center content-center md:px-[130px] p-2 z-40 bg-[#ffffff]">
       <Link className="flex items-center" href="/">
-        <h1 className="text-bold text-xl">Dulcina</h1>
+        <h1 className="text-bold text-3xl font-lobster">Dulcina</h1>
       </Link>
       <div className="flex flex-row justify-around md:hidden">
         <button>

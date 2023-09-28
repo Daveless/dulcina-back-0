@@ -1,5 +1,5 @@
 import { HiOutlineArrowLongRight } from "react-icons/hi2";
-import { IgSection, ImageItem, LandingLayout } from "./components";
+import { IgSection, ImageItem, LandingLayout} from "./components";
 import Link from "next/link";
 
 export default function Home() {
@@ -26,7 +26,7 @@ export default function Home() {
             h={"240px"}
             w={"300px"}
             img={
-              "https://res.cloudinary.com/dccvupp4x/image/upload/f_auto,q_auto/v1/dulcina/xclvkfdfgekrakzqq10q"
+              "https://res.cloudinary.com/dccvupp4x/image/upload/v1693177563/dulcina/landing/items/sofvdc6gi4ocxeu8plhi.jpg"
             }
           />
           <ImageItem
@@ -34,7 +34,7 @@ export default function Home() {
             h={"240px"}
             w={"300px"}
             img={
-              "https://res.cloudinary.com/dccvupp4x/image/upload/v1692334970/dulcina/ppubzayebcdj2rp1vzqu.jpg"
+              "https://res.cloudinary.com/dccvupp4x/image/upload/v1693177566/dulcina/landing/items/omf0sbtzszecdhni4vbl.jpg"
             }
           />
           <ImageItem
@@ -42,12 +42,12 @@ export default function Home() {
             h={"240px"}
             w={"300px"}
             img={
-              "https://res.cloudinary.com/dccvupp4x/image/upload/v1692334961/dulcina/wcaopsmavfivzeal92qa.jpg"
+              "https://res.cloudinary.com/dccvupp4x/image/upload/v1693177570/dulcina/landing/items/mldjjjumtilsyhlmno68.jpg"
             }
           />
-        </div>
+        </div>        
       </div>
-      <IgSection/>
+      <IgSection />
     </>
   );
 }
