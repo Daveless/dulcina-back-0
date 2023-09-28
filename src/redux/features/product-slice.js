@@ -6,11 +6,18 @@ const { BACK_URL } = process.env;
 const initialState = {
   postedProduct:{},
   allProducts: [],
+  product:{},
   error: "",
 };
 export const fetchProducts = createAsyncThunk("product/fetchProducts", async () => {
   const res = await axios.get(
     "https://dulcina-backend.onrender.com/products"
+  );
+  return res.data;
+});
+export const fetchProduct = createAsyncThunk("product/fetchProduct", async (id) => {
+  const res = await axios.get(
+    `https://dulcina-backend.onrender.com/products/${id}`
   );
   return res.data;
 });
@@ -39,6 +46,12 @@ export const products = createSlice({
       state.allProducts = action.payload;
     });
     builder.addCase(fetchProducts.rejected, (state, action) => {
+      state.error = action.payload
+    });
+    builder.addCase(fetchProduct.fulfilled, (state, action) => {
+      state.product = action.payload.product;
+    });
+    builder.addCase(fetchProduct.rejected, (state, action) => {
       state.error = action.payload
     });
     builder.addCase(postProduct.fulfilled, (state, action) => {
