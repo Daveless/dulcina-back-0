@@ -7,8 +7,6 @@ const RelatedProducts = ({ categoryId }) => {
   const [relatedProducts, setRelatedProducts] = useState();
   const shownProducts = relatedProducts?.slice(0, 5);
 
-  console.log("holaaaa", relatedProducts);
-
   useEffect(() => {
     axios
       .get(
