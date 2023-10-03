@@ -1,3 +1,4 @@
+import convertToDecimal from "@/assets/toDecimal";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -19,7 +20,7 @@ const Product = ({ id, name, image, price, description }) => {
         </div>
         <div>
           <h2 className="text-[20px] font-medium">{name}</h2>
-          <p className="text-[18px] font-normal">{price}</p>
+          <p className="text-[18px] font-normal">${convertToDecimal(price)}</p>
         </div>
       </div>
     </Link>
