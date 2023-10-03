@@ -123,7 +123,7 @@ const ProductDetails = ({ product }) => {
               </div>
             </div>
           </div>
-          {Product && <RelatedProducts categoryId={product.categoryId} />}
+          {product && <RelatedProducts categoryId={product.categoryId} />}
         </div>
       </div>
     </div>
