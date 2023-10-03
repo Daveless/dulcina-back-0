@@ -1,15 +1,14 @@
 "use client";
 import { useDispatch, useSelector } from "react-redux";
-import { ButtonContainer, CallButton, StockButtons } from "../..";
+import { CallButton } from "../..";
 import { ChangeCartLength } from "@/redux/features/cart-slice";
 import toast, { Toaster } from "react-hot-toast";
 import { BsFillCartCheckFill } from "react-icons/bs";
-import Link from "next/link";
 import Image from "next/image";
-import RelatedProducts from "./RelatedProducts";
-import { BsArrowLeftCircle, BsShare, BsChevronDown } from "react-icons/bs";
-import { useEffect, useState } from "react";
+import { BsChevronDown } from "react-icons/bs";
+import { useEffect } from "react";
 import { fetchProduct } from "@/redux/features/product-slice";
+import RelatedProducts from "./RelatedProducts";
 
 const ProductDetails = ({ id }) => {
   const dispatch = useDispatch();
@@ -17,6 +16,7 @@ const ProductDetails = ({ id }) => {
   useEffect(() => {
     dispatch(fetchProduct(id));
   }, []);
+  console.log(product);
   const handleAddToCart = () => {
     // Obtener los datos del producto seleccionado
     const localProduct = {
@@ -25,7 +25,9 @@ const ProductDetails = ({ id }) => {
       price: product.price,
       description: product.description,
       quantity: 1,
-      options: product.options,
+      times_sold: product.times_sold,
+      //options: product.options,
+      imageUrl: product.imageUrl,
     };
 
     // Obtener el carrito actual desde el localStorage
@@ -67,7 +69,7 @@ const ProductDetails = ({ id }) => {
     }
     return convertedNumber;
   };
-  console.log(product);
+  const productName = product?.name?.charAt(0).toUpperCase() + product?.name?.slice(1);
   const description =
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
   return (
@@ -94,12 +96,11 @@ const ProductDetails = ({ id }) => {
             </div>
             <div className=" w-[100%] sm:h-[100%] px-[20px] flex rounded-2xl sm:rounded-none bg-[#F8F8F8] flex-col justify-center sm:shadow-[none] shadow-[0_-1px_10px_1px_rgba(0,0,0,0.15)] pt-5">
               <div className="sm:flex sm:flex-col  sm:h-[80%] sm:items-center  w-[100%] mx-auto max-w-[280px] sm:max-w-[400px]">
-                {!!product ? (
+                {productName !== NaN ? (
                   <div className=" w-[100%] mx-auto max-w-[280px] sm:max-w-[400px] sm:min-h-[60%] sm:flex sm:flex-col sm:justify-between">
                     <div>
                       <h1 className="text-[30px] font-black leading-tight">
-                        {product?.name?.charAt(0).toUpperCase() +
-                          product?.name?.slice(1)}
+                        {productName}
                       </h1>
                       <h3 className="text-[20px] weigh font-bold">
                         ${convertToDecimal(product?.price)}
