@@ -9,6 +9,7 @@ import { BsChevronDown } from "react-icons/bs";
 import { useEffect } from "react";
 import { fetchProduct } from "@/redux/features/product-slice";
 import RelatedProducts from "./RelatedProducts";
+import convertToDecimal from "@/assets/toDecimal";
 
 const ProductDetails = ({ id }) => {
   const dispatch = useDispatch();
@@ -59,17 +60,9 @@ const ProductDetails = ({ id }) => {
       { position: "bottom-left" }
     );
   };
-  const convertToDecimal = (num) => {
-    let convertedNumber = 0;
-    if (num?.toString().length == 3) {
-      convertedNumber = String(num)[0] + "." + String(num)[1] + String(num)[2];
-    } else {
-      convertedNumber =
-        String(num)[0] + String(num)[1] + "." + String(num)[2] + String(num)[3];
-    }
-    return convertedNumber;
-  };
-  const productName = product?.name?.charAt(0).toUpperCase() + product?.name?.slice(1);
+
+  const productName =
+    product?.name?.charAt(0).toUpperCase() + product?.name?.slice(1);
   const description =
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
   return (
