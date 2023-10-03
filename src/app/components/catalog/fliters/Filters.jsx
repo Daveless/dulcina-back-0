@@ -148,7 +148,7 @@ const Filters = () => {
     <>
       <div className="w-[365px] flex justify-end">
         <div className="hidden md:flex flex-col w-[280px] ">
-          <h2 className="font-extrabold text-[#222222] text-[30px]">
+          {/* <h2 className="font-extrabold text-[#222222] text-[30px]">
             Festividad
           </h2>
           <div
@@ -163,24 +163,7 @@ const Filters = () => {
               label={c.label}
               name={c.name}
             />
-          ))}
-
-          <h2 className="font-extrabold text-[#222222] text-[30px]">Precio</h2>
-          <div
-            className="w-[100%] mb-[40px] "
-            style={{ borderBottom: "1.5px solid #CFCFCF" }}
-          />
-
-          <ReactSlider
-            className="slider"
-            onChange={onChangePrice}
-            value={byPrice}
-            min={3}
-            max={50}
-          />
-          <p>
-            {byPrice[0]} - {byPrice[1]}
-          </p>
+          ))} */}
           <h2 className="font-extrabold text-[#222222] text-[30px]">
             Categorias
           </h2>
@@ -198,6 +181,26 @@ const Filters = () => {
               name={c.name}
             />
           ))}
+          <div className="flex justify-between items-center">
+            <h2 className="font-extrabold text-[#222222] text-[30px]">
+              Precio
+            </h2>
+            <p>
+              ${byPrice[0]} - ${byPrice[1]}
+            </p>
+          </div>
+          <div
+            className="w-[100%] mb-[40px] "
+            style={{ borderBottom: "1.5px solid #CFCFCF" }}
+          />
+
+          <ReactSlider
+            className="slider"
+            onChange={onChangePrice}
+            value={byPrice}
+            min={3}
+            max={50}
+          />
         </div>
       </div>
     </>
