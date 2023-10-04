@@ -77,8 +77,8 @@ const InfoSlider = () => {
                 </clipPath>
               </defs>
             </svg>
-            <p className="w-full text-4xl">{images[0].caption}</p>
-            <p className="w-full text-lg ">{images[0].desc}</p>
+            <p className="w-full text-[30px] font-bold">{images[0].caption}</p>
+            <p className="w-full text-[16px] font-extralight ">{images[0].desc}</p>
           </div>
           <div className="items-center justify-center mx-auto text-center flex flex-col">
             <svg
@@ -100,8 +100,8 @@ const InfoSlider = () => {
                 stroke-linejoin="round"
               />
             </svg>
-            <p className="w-full text-4xl">{images[1].caption}</p>
-            <p className="w-full text-lg ">{images[1].desc}</p>
+            <p className="w-full text-[30px] font-bold">{images[1].caption}</p>
+            <p className="w-full text-[16px] font-extralight">{images[1].desc}</p>
           </div>
           <div className="items-center justify-center mx-auto text-center flex flex-col">
             <svg
@@ -126,8 +126,8 @@ const InfoSlider = () => {
                 </clipPath>
               </defs>
             </svg>
-            <p className="w-full text-4xl">{images[2].caption}</p>
-            <p className="w-full text-lg ">{images[2].desc}</p>
+            <p className="w-full text-[30px] font-bold">{images[2].caption}</p>
+            <p className="w-full text-[16px] font-extralight">{images[2].desc}</p>
           </div>
         </div>
         <div className="h-[60%] m-auto px-5 text-center grid grid-rows-[60%_15%_30%] justify-center items-center justify-items-center md:hidden">
