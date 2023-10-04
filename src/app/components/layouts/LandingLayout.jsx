@@ -17,7 +17,7 @@ export const LandingLayout = ({
         <meta name="og:description" content={pageDescription} />
         {imageFullUrl && <meta name="og:image" content={imageFullUrl} />}
       </Head>
-      <div className={`  bg-[url('https://res.cloudinary.com/dccvupp4x/image/upload/v1692243637/dulcina/mxue4vna37rvenilkmr0.png')] bg-no-repeat bg-fixed bg-cover `}>
+      <div className={`  bg-[url('https://res.cloudinary.com/dccvupp4x/image/upload/v1696201147/dulcina/landing/f91ampavytnzbwncvssl.jpg')] bg-no-repeat bg-fixed bg-cover `}>
       <div className={` bg-black/[0.4] backdrop-brightness-75`}>
         <nav>
           <LandingNavbar />

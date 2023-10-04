@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin"] });
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.className}  bg-[#f2f2f2]`}>
+      <body className={`${inter.className}  bg-[#f8f8f8]`}>
         <ReduxProvider>
           {children}
         </ReduxProvider>
