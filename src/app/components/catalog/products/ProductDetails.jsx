@@ -137,7 +137,7 @@ const ProductDetails = ({ id }) => {
               </div>
             </div>
           </div>
-          <RelatedProducts categoryId={product?.categoryId} />
+          {product && <RelatedProducts categoryId={product.categoryId} />}
         </div>
       </div>
     </div>
