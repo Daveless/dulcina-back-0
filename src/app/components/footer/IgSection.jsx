@@ -22,15 +22,7 @@ const IgSection = () => {
       >
         <BsInstagram size={"60px"} />
       </ImageItem>
-      <ImageItem
-        h={"300px"}
-        w={"283.4px"}
-        img={
-          "https://res.cloudinary.com/dccvupp4x/image/upload/v1693176623/dulcina/landing/bcfxv3pcbhtd2ccpblad.jpg"
-        }
-      >
-        <BsInstagram size={"60px"} />
-      </ImageItem>
+      
       <ImageItem
         h={"300px"}
         w={"283.4px"}
@@ -45,6 +37,15 @@ const IgSection = () => {
         w={"283.4px"}
         img={
           "https://res.cloudinary.com/dccvupp4x/image/upload/v1693177011/dulcina/landing/fbkfe6q4mnaffutev9md.jpg"
+        }
+      >
+        <BsInstagram size={"60px"} />
+      </ImageItem>
+      <ImageItem
+        h={"300px"}
+        w={"283.4px"}
+        img={
+          "https://res.cloudinary.com/dccvupp4x/image/upload/v1696379139/dulcina/landing/tnmaasujwtszj8izy9ho.jpg"
         }
       >
         <BsInstagram size={"60px"} />
