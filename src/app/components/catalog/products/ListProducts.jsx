@@ -29,7 +29,7 @@ const ListProducts = () => {
                 price={p.price}
               />
             ))
-          : [1,2,3,4,5,6].map(p=><ProductSqueleton/>)}
+          : [1,2,3,4,5,6].map(p=><ProductSqueleton key={p}/>)}
       </div>
     );
 };
