@@ -14,7 +14,7 @@ const CarrouselSlider = ({ products }) => {
               price={p?.price}
             />
           ))
-        : [1, 2, 3, 4, 5].map((p) => <ProductSqueleton />)}
+        : [1, 2, 3, 4, 5].map((p) => <ProductSqueleton key={p} />)}
     </div>
   );
 };
