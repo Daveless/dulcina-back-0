@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const Product = ({ id, name, image, price, description }) => {
@@ -13,13 +14,21 @@ const Product = ({ id, name, image, price, description }) => {
   };
   return (
     <Link href={`products/${id}`}>
-      <div className="flex flex-col h-[375px] mb-[50px] justify-between">
-        <div className=" flex justify-center  bg-[#ffffff] h-[300px] w-[235px] ">
-          <img src={image} className="object-contain" />
+      <div className="flex flex-col w-full p-3 h-full aspect-[4/3] mx-auto justify-center items-center">
+        <div className="relative grid items-stretch w-full h-[300px]  ">
+          <Image
+            alt={name}
+            src={image}
+            fill={true}
+            className="object-scale-down rounded-xl w-full absolute"
+          />
         </div>
+
         <div>
           <h2 className="text-[20px] font-medium">{name}</h2>
-          <p className="text-[18px] font-normal">${convertToDecimal(price)}</p>
+          <p className="text-[18px] font-normal text-[#6D6D6D]">
+            ${convertToDecimal(price)}
+          </p>
         </div>
       </div>
     </Link>
