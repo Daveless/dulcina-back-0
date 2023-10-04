@@ -1,6 +1,7 @@
 "use client";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import CarrouselSlider from "../../landing/CarrouselSlider";
 import Product from "./Product";
 
 const RelatedProducts = ({ categoryId }) => {
@@ -21,6 +22,7 @@ const RelatedProducts = ({ categoryId }) => {
   return (
     <div className="w-[90%] mx-auto">
       <h3 className="font-bold text-2xl my-6">Productos Relacionados</h3>
+      <CarrouselSlider products={shownProducts} />
       <div className="snap-mandatory snap-x flex flex-row gap-6 overflow-x-scroll ">
         {shownProducts?.map((p) => (
           <Product
