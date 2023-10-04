@@ -1,3 +1,4 @@
+import convertToDecimal from "@/assets/toDecimal";
 import { ChangeCartLength } from "@/redux/features/cart-slice";
 import Image from "next/image";
 import { useDispatch } from "react-redux";
@@ -48,7 +49,7 @@ const CartProduct = ({ id,name, price, amount,setCartProducts, imageUrl }) => {
       </div>
       <div className="flex flex-col">
         <p>{name}</p>
-        <p>{price}</p>
+        <p>${convertToDecimal(price)}</p>
         <button onClick={DeleteProductCart}>eliminar</button>
       </div>
     </div>
