@@ -7,6 +7,7 @@ const initialState = {
   postedProduct:{},
   allProducts: [],
   product:{},
+  patchProduct:"",
   error: "",
 };
 export const fetchProducts = createAsyncThunk("product/fetchProducts", async () => {
@@ -37,6 +38,15 @@ export const postProduct = createAsyncThunk("product/postProduct", async (body) 
   );
   return res.data;
 });
+export const patchTimesSoldProduct = createAsyncThunk("product/patchTimesSoldProduct", async (id) => {
+  const add_times_sold = {
+    add_times_sold:1
+  }
+  const res = await axios.patch(
+    `https://dulcina-backend.onrender.com/products/addTimesSold/${id}`, add_times_sold
+  );
+  return res.data;
+});
 
 export const products = createSlice({
   name: "products",
@@ -58,6 +68,12 @@ export const products = createSlice({
       state.postedProduct = action.payload
     });
     builder.addCase(postProduct.rejected, (state, action) => {
+      state.error = action.payload
+    });
+    builder.addCase(patchTimesSoldProduct.fulfilled, (state, action) => {
+      state.patchProduct = "success"
+    });
+    builder.addCase(patchTimesSoldProduct.rejected, (state, action) => {
       state.error = action.payload
     });
   },
