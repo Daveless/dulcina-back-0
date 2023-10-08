@@ -15,7 +15,7 @@ const initialState = {
 
 
 
-export const loginUser = createAsyncThunk("product/loginUser", async (body) => {
+export const loginUser = createAsyncThunk("user/loginUser", async (body) => {
     console.log(body);
   const res = await axios.post(
     "https://dulcina-backend.onrender.com/admin/login",body
