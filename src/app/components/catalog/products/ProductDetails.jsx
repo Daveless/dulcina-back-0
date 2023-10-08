@@ -17,7 +17,6 @@ const ProductDetails = ({ id }) => {
   useEffect(() => {
     dispatch(fetchProduct(id));
   }, []);
-  console.log(product);
   const handleAddToCart = () => {
     // Obtener los datos del producto seleccionado
     const localProduct = {
