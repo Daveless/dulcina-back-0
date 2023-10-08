@@ -5,20 +5,28 @@ const computeFilteredData = (
   categoryFilter,
   genereFilter,
   priceFilter
-) =>
-  products.filter(
-    (product) =>
-      (!categoryFilter || product.category === categoryFilter) &&
-      (!genereFilter || product.genere === genereFilter) &&
-      (!priceFilter || product.price === priceFilter)
+) => {
+  return products.filter(
+    (product) => !categoryFilter || product.categoryId == categoryFilter
   );
+};
+
+/* {
+  return products?.filter((product) => {
+    console.log(product.categoryId == categoryFilter);
+
+    (!categoryFilter || product.categoryId == categoryFilter) &&
+      (!genereFilter || product.genere == genereFilter) &&
+      (!priceFilter || product.price == priceFilter);
+  });
+}; */
 
 const initialState = {
   value: {
     filtered: [],
     byGenere: "",
     byCategory: "",
-    byPrice: [3,50],
+    byPrice: [3, 50],
   },
 };
 
@@ -53,9 +61,7 @@ export const filter = createSlice({
         },
       };
     },
-    filterAll: (state, action) => {
-      console.log(state.value.byGenere);
-      console.log(state.value.byCategory);
+    filterAll: (state, action) => {     
       return {
         value: {
           ...state.value,
@@ -78,4 +84,4 @@ export const {
   ChangePriceInput,
   filterAll,
 } = filter.actions;
-export default filter.reducer
+export default filter.reducer;
