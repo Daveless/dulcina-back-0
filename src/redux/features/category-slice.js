@@ -4,33 +4,23 @@ import axios from "axios";
 const { BACK_URL } = process.env;
 
 const initialState = {
-  postedProduct:{},
+  postedCategory:{},
   allCategories: [],
   error: "",
 };
-export const fetchProducts = createAsyncThunk("product/fetchProducts", async () => {
+export const fetchCategories = createAsyncThunk("category/fetchCategories", async () => {
   const res = await axios.get(
-    "https://dulcina-backend.onrender.com/products"
+    "https://dulcina-backend.onrender.com/categories"
   );
   return res.data;
 });
-export const fetchProduct = createAsyncThunk("product/fetchProduct", async (id) => {
-  const res = await axios.get(
-    `https://dulcina-backend.onrender.com/products/${id}`
-  );
-  return res.data;
-});
-export const postProduct = createAsyncThunk("product/postProduct", async (body) => {
-  const product = {
-    name: body.name,
-    description: body.description,
-    highlight_date: body.highlighDate,
-    imageUrl: body.image,
-    price: body.price,
-    categoryId: 1
+
+export const postCategory = createAsyncThunk("category/postCategories", async (body) => {
+  const category = {
+    name: body.name
   }
   const res = await axios.post(
-    "https://dulcina-backend.onrender.com/products", product, {
+    "https://dulcina-backend.onrender.com/categories", category, {
       headers:{Authorization:`Bearer ${body.token}`}
     }
   );
@@ -41,22 +31,16 @@ export const products = createSlice({
   name: "products",
   initialState,  
   extraReducers: (builder) => {
-    builder.addCase(fetchProducts.fulfilled, (state, action) => {
-      state.allProducts = action.payload;
+    builder.addCase(fetchCategories.fulfilled, (state, action) => {
+      state.allCategories = action.payload;
     });
-    builder.addCase(fetchProducts.rejected, (state, action) => {
+    builder.addCase(fetchCategories.rejected, (state, action) => {
       state.error = action.payload
+    });    
+    builder.addCase(postCategory.fulfilled, (state, action) => {
+      state.postedCategory = action.payload
     });
-    builder.addCase(fetchProduct.fulfilled, (state, action) => {
-      state.product = action.payload.product;
-    });
-    builder.addCase(fetchProduct.rejected, (state, action) => {
-      state.error = action.payload
-    });
-    builder.addCase(postProduct.fulfilled, (state, action) => {
-      state.postedProduct = action.payload
-    });
-    builder.addCase(postProduct.rejected, (state, action) => {
+    builder.addCase(postCategory.rejected, (state, action) => {
       state.error = action.payload
     });
   },
