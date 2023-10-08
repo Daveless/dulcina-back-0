@@ -7,7 +7,6 @@ const CartProductsContainer = () => {
   useEffect(() => {
     setCartProducts(JSON.parse(localStorage.getItem("cartItems")) || []);
   }, []);
-  console.log(CartProducts);
   return (
     <div>
       {CartProducts?.length ? CartProducts?.map((p) => {
