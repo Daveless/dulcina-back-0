@@ -6,6 +6,7 @@ const { BACK_URL } = process.env;
 const initialState = {
   postedProduct:{},
   allProducts: [],
+  copyAllProducts: [],
   product:{},
   patchProduct:"",
   error: "",
@@ -29,7 +30,7 @@ export const postProduct = createAsyncThunk("product/postProduct", async (body) 
     highlight_date: body.highlighDate,
     imageUrl: body.image,
     price: body.price,
-    categoryId: 1
+    categoryId: body.categoryId
   }
   const res = await axios.post(
     "https://dulcina-backend.onrender.com/products", product, {
@@ -54,6 +55,7 @@ export const products = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchProducts.fulfilled, (state, action) => {
       state.allProducts = action.payload;
+      state.copyAllProducts = action.payload;
     });
     builder.addCase(fetchProducts.rejected, (state, action) => {
       state.error = action.payload
