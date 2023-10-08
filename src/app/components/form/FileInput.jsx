@@ -6,18 +6,15 @@ import "dotenv/config";
 const { CLOUDINARY_NAME } = process.env;
 
 const FileInput = ({image,setImage}) => {
-  console.log(CLOUDINARY_NAME);
 
   const [loading, setLoading] = useState(false);
 
   const uploadImage = async (e) => {
     const files = e.target.files;
-    console.log(files[0]);
     const data = new FormData();
     data.append("file", files[0]);
     data.append("upload_preset", "dulcina");
     setLoading(true);
-    console.log(data);
     const res = await fetch(
       `https://api.cloudinary.com/v1_1/dccvupp4x/image/upload`,
       {
@@ -26,7 +23,6 @@ const FileInput = ({image,setImage}) => {
       }
     ).then((r) => r.json())
     .catch(err=> console.log(err))
-    console.log(res);
     setImage(res.secure_url);
     setLoading(false);
   };
