@@ -1,13 +1,13 @@
+import { per100 } from "@/assets";
 import { createSlice } from "@reduxjs/toolkit";
 
-const computeFilteredData = (
-  products,
-  categoryFilter,
-  genereFilter,
-  priceFilter
-) => {
-  return products.filter(
-    (product) => !categoryFilter || product.categoryId == categoryFilter
+const computeFilteredData = (products, categoryFilter, priceFilter) => {
+  return products?.filter(
+    (product) =>
+      (!categoryFilter || product.categoryId == categoryFilter) &&
+      (!priceFilter ||
+        (product.price >= per100(priceFilter[0]) &&
+          product.price <= per100(priceFilter[1])))
   );
 };
 
@@ -24,8 +24,10 @@ const computeFilteredData = (
 const initialState = {
   value: {
     filtered: [],
-    byGenere: "",
-    byCategory: "",
+    byCategory: {
+      id:"",
+      name:""
+    },
     byPrice: [3, 50],
   },
 };
@@ -34,8 +36,24 @@ export const filter = createSlice({
   name: "filter",
   initialState,
   reducers: {
-    clearFilter: () => {
-      return initialState;
+    clearByCategoryFilter: (state, action) => {
+      return {
+        value: {
+          ...state.value,
+          byCategory: {
+            id:"",
+            name:""
+          },
+        },
+      };
+    },
+    clearByPriceFilter: (state, action) => {
+      return {
+        value: {
+          ...state.value,
+          byPrice: [3, 50],
+        },
+      };
     },
     ChangeGenereInput: (state, action) => {
       return {
@@ -46,10 +64,14 @@ export const filter = createSlice({
       };
     },
     ChangeCategoryInput: (state, action) => {
+      console.log(action.payload);
       return {
         value: {
           ...state.value,
-          byCategory: action.payload,
+          byCategory: {
+            id:action.payload.id,
+            name:action.payload.name
+          },
         },
       };
     },
@@ -61,14 +83,13 @@ export const filter = createSlice({
         },
       };
     },
-    filterAll: (state, action) => {     
+    filterAll: (state, action) => {
       return {
         value: {
           ...state.value,
           filtered: computeFilteredData(
             action.payload,
-            state.value.byCategory,
-            state.value.byGenere,
+            state.value.byCategory.id,
             state.value.byPrice
           ),
         },
@@ -78,6 +99,8 @@ export const filter = createSlice({
 });
 
 export const {
+  clearByCategoryFilter,
+  clearByPriceFilter,
   clearFilter,
   ChangeGenereInput,
   ChangeCategoryInput,
