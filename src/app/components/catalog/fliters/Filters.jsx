@@ -11,11 +11,12 @@ import {
   ChangeCategoryInput,
   ChangePriceInput,
   filterAll,
+  clearByCategoryFilter,
 } from "@/redux/features/filter-slice";
 import { fetchCategories } from "@/redux/features/category-slice";
 import { capitalize } from "@/assets";
 import { TextSqueleton } from "../../ui/Squeletons";
-
+import { DeleteButton } from "../../ui";
 
 const Filters = () => {
   const dispatch = useDispatch();
@@ -27,12 +28,21 @@ const Filters = () => {
   const products = useSelector(
     (state) => state.productsReducer.allProducts.products
   );
+  const categoryInput = useSelector(
+    (state) => state.filterReducer.value.byCategory.id
+  );
+
   useEffect(() => {
     dispatch(fetchCategories());
   }, []);
 
   const onChangeCategory = (e) => {
-    dispatch(ChangeCategoryInput(e.target.value));
+    dispatch(
+      ChangeCategoryInput({
+        id: e.target.value,
+        name: allCategories.find((c) => c.id == e.target.value).name,
+      })
+    );
     dispatch(filterAll(products));
   };
   const onChangeGenere = (e) => {
@@ -41,6 +51,10 @@ const Filters = () => {
   };
   const onChangePrice = (e) => {
     dispatch(ChangePriceInput(e));
+    dispatch(filterAll(products));
+  };
+  const deleteFilter = () => {
+    dispatch(clearByCategoryFilter());
     dispatch(filterAll(products));
   };
 
@@ -64,28 +78,33 @@ const Filters = () => {
               name={c.name}
             />
           ))} */}
-          <h2 className="font-extrabold text-[#222222] text-[30px]">
-            Categorias
-          </h2>
+          <div className="flex justify-between items-center">
+            <h2 className="font-extrabold text-[#222222] text-[30px]">
+              Categorias
+            </h2>
+            {categoryInput ? (
+              <DeleteButton onClick={deleteFilter} content="Borrar" />
+            ) : null}
+          </div>
           <div
             className="w-[100%] mb-[10px] "
             style={{ borderBottom: "1.5px solid #CFCFCF" }}
           />
 
-          {allCategories?.length ?(
-
-            allCategories?.map((c) => (
-              <FiltersItem
-                key={c.id}
-                id={c.id}
-                onChange={onChangeCategory}
-                name="category"
-                value={c.id}
-                label={capitalize(c.name)}
-              />
-          )
-          )): [1,2].map(e=>(<TextSqueleton key={e}/>))
-          }
+          {allCategories?.length
+            ? allCategories?.map((c) => (
+                <FiltersItem
+                  key={c.id}
+                  id={c.id}
+                  onChange={onChangeCategory}
+                  name="category"
+                  value={c.id}
+                  categoryInput={categoryInput}
+                  nombre={c.name}
+                  label={capitalize(c.name)}
+                />
+              ))
+            : [1, 2].map((e) => <TextSqueleton key={e} />)}
           <div className="flex justify-between items-center">
             <h2 className="font-extrabold text-[#222222] text-[30px]">
               Precio
