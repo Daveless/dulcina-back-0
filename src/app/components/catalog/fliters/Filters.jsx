@@ -14,6 +14,7 @@ import {
 } from "@/redux/features/filter-slice";
 import { fetchCategories } from "@/redux/features/category-slice";
 import { capitalize } from "@/assets";
+import { TextSqueleton } from "../../ui/Squeletons";
 
 
 const Filters = () => {
@@ -71,16 +72,20 @@ const Filters = () => {
             style={{ borderBottom: "1.5px solid #CFCFCF" }}
           />
 
-          {allCategories?.map((c) => (
-            <FiltersItem
-              key={c.id}
-              id={c.id}
-              onChange={onChangeCategory}
-              name="category"
-              value={c.id}
-              label={capitalize(c.name)}
-            />
-          ))}
+          {allCategories?.length ?(
+
+            allCategories?.map((c) => (
+              <FiltersItem
+                key={c.id}
+                id={c.id}
+                onChange={onChangeCategory}
+                name="category"
+                value={c.id}
+                label={capitalize(c.name)}
+              />
+          )
+          )): [1,2].map(e=>(<TextSqueleton key={e}/>))
+          }
           <div className="flex justify-between items-center">
             <h2 className="font-extrabold text-[#222222] text-[30px]">
               Precio
