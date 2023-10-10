@@ -1,22 +1,27 @@
 "use client";
 import { useSelector } from "react-redux";
 import { SortContainer } from "../sort";
+import { capitalize } from "@/assets";
 
 const UxProducts = () => {
   const products = useSelector(
     (state) => state.productsReducer.allProducts.products
   );
+  const categoryInputName = useSelector(
+    (state) => state.filterReducer.value.byCategory.name
+  );
+  console.log(categoryInputName);
   return (
     <div className="">
       <div className="flex justify-between mb-[20px]">
-        <div className="w-[330px] flex justify-end">
+        <div className="w-[400px] flex justify-start pl-[88px]">
           <p className="text-[17px] font-normal hidden md:flex">
-            Catalogo {">"} Arreglos {">"} Navidad{" "}
+            Dulcina {">"} Catalogo {categoryInputName?.length ? `> ${capitalize(categoryInputName)}`: null} 
           </p>
         </div>
         <div className="flex w-[950px] justify-between pr-[70px] text-[#535353]">
           <div>
-            <p>{products?.length} resultados</p>
+            {products?.length ? <p>{products?.length} resultados</p> : null}
           </div>
           <div className="hidden md:flex">
             <SortContainer />
