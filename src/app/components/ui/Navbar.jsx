@@ -112,7 +112,7 @@ const Navbar = () => {
         </button>
       </div>
       <div
-        className={`md:relative col-start-1 col-end-3 row-start-2 md:justify-end pb-4  m-auto px-4 md:flex md:gap-5 items-center bg-white  md:bg-inherit w-full text-center text-black  z-30 md:z-60 ${
+        className={`md:relative col-start-1 col-end-3 row-start-2 md:justify-end pb-4 md:pb-0  m-auto px-4 md:flex md:gap-5 items-center bg-white  md:bg-inherit w-full text-center text-black  z-30 md:z-60 ${
           isShown ? "flex flex-col md:flex" : "hidden md:flex "
         }`}
       >
