@@ -26,7 +26,7 @@ const Filters = () => {
     (state) => state.categoryReducer.allCategories.categories
   );
   const products = useSelector(
-    (state) => state.productsReducer.allProducts.products
+    (state) => state.productsReducer?.allProducts?.products
   );
   const categoryInput = useSelector(
     (state) => state.filterReducer.value.byCategory.id
