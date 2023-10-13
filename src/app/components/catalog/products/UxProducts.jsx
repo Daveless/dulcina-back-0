@@ -5,12 +5,11 @@ import { capitalize } from "@/assets";
 
 const UxProducts = () => {
   const products = useSelector(
-    (state) => state.productsReducer.allProducts.products
+    (state) => state.productsReducer?.allProducts?.products
   );
   const categoryInputName = useSelector(
     (state) => state.filterReducer.value.byCategory.name
   );
-  console.log(categoryInputName);
   return (
     <div className="">
       <div className="flex justify-between mb-[20px]">
