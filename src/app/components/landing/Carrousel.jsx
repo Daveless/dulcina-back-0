@@ -5,7 +5,6 @@ import CarrouselSlider from "./CarrouselSlider";
 
 const Carrousel = () => {
   const [bestProducts, setBestProducts] = useState();
-  console.log(bestProducts);
   useEffect(() => {
     axios
       .get("https://dulcina-backend.onrender.com/bestProduct")

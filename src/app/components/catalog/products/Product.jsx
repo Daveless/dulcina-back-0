@@ -1,3 +1,5 @@
+import convertToDecimal from "@/assets/toDecimal";
+import Image from "next/image";
 import Link from "next/link";
 
 const Product = ({ id, name, image, price, description }) => {

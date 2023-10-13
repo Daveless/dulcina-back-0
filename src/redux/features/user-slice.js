@@ -1,8 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { redirect } from "next/dist/server/api-utils";
-import Router from "next/router";
-import { NextResponse } from "next/server";
 
 
 const { BACK_URL } = process.env
@@ -15,7 +12,7 @@ const initialState = {
 
 
 
-export const loginUser = createAsyncThunk("product/loginUser", async (body) => {
+export const loginUser = createAsyncThunk("user/loginUser", async (body) => {
     console.log(body);
   const res = await axios.post(
     "https://dulcina-backend.onrender.com/admin/login",body
