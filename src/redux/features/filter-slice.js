@@ -36,13 +36,25 @@ export const filter = createSlice({
   name: "filter",
   initialState,
   reducers: {
+    fSortProductsByPop: (state, action) => {
+      return {
+        ...state,
+        filtered: action.payload?.slice().sort((a, b) => b.times_sold - a.times_sold),
+      };
+    },
+    fSortProductsByTime: (state, action) => {
+      return {
+        ...state,
+        filtered: action.payload?.slice().sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+      };
+    },
     clearByCategoryFilter: (state, action) => {
       return {
         value: {
           ...state.value,
           byCategory: {
-            id:"",
-            name:""
+            id: "",
+            name: "",
           },
         },
       };
@@ -64,13 +76,12 @@ export const filter = createSlice({
       };
     },
     ChangeCategoryInput: (state, action) => {
-      console.log(action.payload);
       return {
         value: {
           ...state.value,
           byCategory: {
-            id:action.payload.id,
-            name:action.payload.name
+            id: action.payload.id,
+            name: action.payload.name,
           },
         },
       };
@@ -97,6 +108,8 @@ export const filter = createSlice({
     },
   },
 });
+export const selectFiltered = (state) => state.filtered;
+
 
 export const {
   clearByCategoryFilter,
@@ -106,5 +119,7 @@ export const {
   ChangeCategoryInput,
   ChangePriceInput,
   filterAll,
+  fSortProductsByPop,
+  fSortProductsByTime
 } = filter.actions;
 export default filter.reducer;
