@@ -27,8 +27,8 @@ export const postCategory = createAsyncThunk("category/postCategories", async (b
   return res.data;
 });
 
-export const products = createSlice({
-  name: "products",
+export const categories = createSlice({
+  name: "categories",
   initialState,  
   extraReducers: (builder) => {
     builder.addCase(fetchCategories.fulfilled, (state, action) => {
@@ -46,4 +46,4 @@ export const products = createSlice({
   },
 });
 
-export default products.reducer;
+export default categories.reducer;
