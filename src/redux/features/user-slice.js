@@ -1,8 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { redirect } from "next/dist/server/api-utils";
-import Router from "next/router";
-import { NextResponse } from "next/server";
 
 
 const { BACK_URL } = process.env
