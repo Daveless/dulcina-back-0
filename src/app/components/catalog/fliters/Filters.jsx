@@ -12,6 +12,7 @@ import {
   ChangePriceInput,
   filterAll,
 } from "@/redux/features/filter-slice";
+import { Searchbar } from "../../ui";
 
 const ArrayCategories = [
   {
@@ -146,8 +147,12 @@ const Filters = () => {
 
   return (
     <>
-      <div className="w-[365px] flex justify-end">
-        <div className="hidden md:flex flex-col w-[280px] ">
+      <div className="md:hidden">
+        <Searchbar />
+      </div>
+
+      <div className="w-[365px] hidden md:flex">
+        <div className="flex flex-col w-[280px] ">
           <h2 className="font-extrabold text-[#222222] text-[30px]">
             Festividad
           </h2>
