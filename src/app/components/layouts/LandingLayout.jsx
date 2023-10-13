@@ -26,7 +26,6 @@ export const LandingLayout = ({
         <main>{children}</main>
       </div>
       </div>
-      <footer></footer>
     </>
   );
 };

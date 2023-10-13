@@ -1,3 +1,4 @@
+export { default as CartProductsContainer } from './CartProductsContainer';
 export { default as ListProducts } from './ListProducts';
 export { default as Product } from './Product';
 export { default as ProductDetails } from './ProductDetails';
