@@ -6,17 +6,22 @@ import { FormInput } from ".";
 import { postProduct } from "@/redux/features/product-slice";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
+import { fetchCategories } from "@/redux/features/category-slice";
 
 const FormContainer = () => {
   const token = useSelector((state) => state.userReducer.token);
   const role = useSelector((state) => state.userReducer.role);
+  const allCategories = useSelector(
+    (state) => state.categoryReducer.allCategories.categories
+  );
 
   const dispatch = useDispatch();
 
   const rout = useRouter();
 
-  console.log(role, token);
   useEffect(() => {
+    dispatch(fetchCategories());
+
     if (role != "admin") {
       rout.push("/login");
     }
@@ -27,6 +32,7 @@ const FormContainer = () => {
     price: "",
     description: "",
     highlighDate: "",
+    categoryId:1,
   });
   const onChange = (e, inputName) => {
     setInput({
@@ -34,14 +40,12 @@ const FormContainer = () => {
       [inputName]: e.target.value,
     });
   };
-
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log("asd");
     let body = {
       ...input,
       image,
-      token
+      token,
     };
     dispatch(postProduct(body));
   };
@@ -81,7 +85,7 @@ const FormContainer = () => {
             placeholder={"12:12:2020"}
             label={"Fecha"}
           />
-          <SelectInput firstOption={"Seleccionar"} label={"Categoría"} />
+          <SelectInput onChange={onChange} selected={input.categoryId}  options={allCategories} inputName="categoryId" firstOption={"Seleccionar"} label={"Categoría"} />
           <FormInput
             onChange={onChange}
             input={input}

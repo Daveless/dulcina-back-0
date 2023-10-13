@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FiltersItem from "./FiltersItem";
 import ReactSlider from "react-slider";
 import "./filters.css";
@@ -11,138 +11,52 @@ import {
   ChangeCategoryInput,
   ChangePriceInput,
   filterAll,
+  clearByCategoryFilter,
 } from "@/redux/features/filter-slice";
 import { Searchbar } from "../../ui";
-
-const ArrayCategories = [
-  {
-    id: 1,
-    name: "categorias",
-    label: "Arreglos",
-  },
-  {
-    id: 2,
-    name: "categorias",
-    label: "Bombones",
-  },
-  {
-    id: 3,
-    name: "categorias",
-    label: "Casas",
-  },
-];
-const ArrayFestivities = [
-  {
-    id: 1,
-    name: "festividad",
-    label: "Día de la mujer",
-  },
-  {
-    id: 2,
-    name: "festividad",
-    label: "Día del padre",
-  },
-  {
-    id: 3,
-    name: "festividad",
-    label: "Día de la niño",
-  },
-  {
-    id: 4,
-    name: "festividad",
-    label: "Día de la madre",
-  },
-  {
-    id: 5,
-    name: "festividad",
-    label: "Navidad",
-  },
-];
-
-const ArrayProducts = [
-  {
-    id: 1,
-    name: "Fresas y Masmellos",
-    image: "https://dulcina.org/imgs/producto9.png",
-    price: 16.99,
-    category: "Arreglos",
-    genere: "Hombre",
-  },
-  {
-    id: 2,
-    name: "Fresas y Masmellos",
-    image: "https://dulcina.org/imgs/producto9.png",
-    price: 16.99,
-    category: "Arreglos",
-    genere: "Niño",
-  },
-  {
-    id: 3,
-    name: "Fresas y Masmellos",
-    image: "https://dulcina.org/imgs/producto9.png",
-    price: 16.99,
-    category: "Casas",
-    genere: "Hombre",
-  },
-  {
-    id: 4,
-    name: "Fresas y Masmellos",
-    image: "https://dulcina.org/imgs/producto9.png",
-    price: 16.99,
-    category: "Bombones",
-    genere: "Niño",
-  },
-  {
-    id: 5,
-    name: "Fresas y Masmellos",
-    image: "https://dulcina.org/imgs/producto9.png",
-    price: 16.99,
-    category: "Bombones",
-    genere: "Mujer",
-  },
-  {
-    id: 6,
-    name: "Fresas y Masmellos",
-    image: "https://dulcina.org/imgs/producto9.png",
-    price: 16.99,
-    category: "Casas",
-    genere: "Mujer",
-  },
-  {
-    id: 7,
-    name: "Fresas y Masmellos",
-    image: "https://dulcina.org/imgs/producto9.png",
-    price: 16.99,
-    category: "Arreglos",
-    genere: "Niño",
-  },
-  {
-    id: 8,
-    name: "Fresas y Masmellos",
-    image: "https://dulcina.org/imgs/producto9.png",
-    price: 16.99,
-    category: "Arreglos",
-    genere: "Hombre",
-  },
-];
+import { fetchCategories } from "@/redux/features/category-slice";
+import { capitalize } from "@/assets";
+import { TextSqueleton } from "../../ui/Squeletons";
+import { DeleteButton } from "../../ui";
 
 const Filters = () => {
   const dispatch = useDispatch();
   const filtered = useSelector((state) => state.filterReducer.value.filtered);
   const byPrice = useSelector((state) => state.filterReducer.value.byPrice);
-  //console.log(byPrice);
+  const allCategories = useSelector(
+    (state) => state.categoryReducer.allCategories.categories
+  );
+  const products = useSelector(
+    (state) => state.productsReducer?.allProducts?.products
+  );
+  const categoryInput = useSelector(
+    (state) => state.filterReducer.value.byCategory.id
+  );
+
+  useEffect(() => {
+    dispatch(fetchCategories());
+  }, []);
 
   const onChangeCategory = (e) => {
-    dispatch(ChangeCategoryInput(e.target.value));
-    dispatch(filterAll(ArrayProducts));
+    dispatch(
+      ChangeCategoryInput({
+        id: e.target.value,
+        name: allCategories.find((c) => c.id == e.target.value).name,
+      })
+    );
+    dispatch(filterAll(products));
   };
   const onChangeGenere = (e) => {
     dispatch(ChangeGenereInput(e.target.value));
-    dispatch(filterAll(ArrayProducts));
+    dispatch(filterAll(products));
   };
   const onChangePrice = (e) => {
     dispatch(ChangePriceInput(e));
-    dispatch(filterAll(ArrayProducts));
+    dispatch(filterAll(products));
+  };
+  const deleteFilter = () => {
+    dispatch(clearByCategoryFilter());
+    dispatch(filterAll(products));
   };
 
   return (
@@ -151,9 +65,9 @@ const Filters = () => {
         <Searchbar />
       </div>
 
-      <div className="w-[365px] hidden md:flex">
-        <div className="flex flex-col w-[280px] ">
-          <h2 className="font-extrabold text-[#222222] text-[30px]">
+      <div className="w-[365px] hidden md:flex justify-end">
+        <div className="flex-col w-[280px] hidden md:flex">
+          {/* <h2 className="font-extrabold text-[#222222] text-[30px]">
             Festividad
           </h2>
           <div
@@ -168,9 +82,42 @@ const Filters = () => {
               label={c.label}
               name={c.name}
             />
-          ))}
+          ))} */}
+          <div className="flex justify-between items-center">
+            <h2 className="font-extrabold text-[#222222] text-[30px]">
+              Categorias
+            </h2>
+            {categoryInput ? (
+              <DeleteButton onClick={deleteFilter} content="Borrar" />
+            ) : null}
+          </div>
+          <div
+            className="w-[100%] mb-[10px] "
+            style={{ borderBottom: "1.5px solid #CFCFCF" }}
+          />
 
-          <h2 className="font-extrabold text-[#222222] text-[30px]">Precio</h2>
+          {allCategories?.length
+            ? allCategories?.map((c) => (
+                <FiltersItem
+                  key={c.id}
+                  id={c.id}
+                  onChange={onChangeCategory}
+                  name="category"
+                  value={c.id}
+                  categoryInput={categoryInput}
+                  nombre={c.name}
+                  label={capitalize(c.name)}
+                />
+              ))
+            : [1, 2].map((e) => <TextSqueleton key={e} />)}
+          <div className="flex justify-between items-center">
+            <h2 className="font-extrabold text-[#222222] text-[30px]">
+              Precio
+            </h2>
+            <p>
+              ${byPrice[0]} - ${byPrice[1]}
+            </p>
+          </div>
           <div
             className="w-[100%] mb-[40px] "
             style={{ borderBottom: "1.5px solid #CFCFCF" }}
@@ -183,26 +130,6 @@ const Filters = () => {
             min={3}
             max={50}
           />
-          <p>
-            {byPrice[0]} - {byPrice[1]}
-          </p>
-          <h2 className="font-extrabold text-[#222222] text-[30px]">
-            Categorias
-          </h2>
-          <div
-            className="w-[100%] mb-[10px] "
-            style={{ borderBottom: "1.5px solid #CFCFCF" }}
-          />
-
-          {ArrayCategories.map((c) => (
-            <FiltersItem
-              key={c.id}
-              id={c.id}
-              onChange={onChangeCategory}
-              label={c.label}
-              name={c.name}
-            />
-          ))}
         </div>
       </div>
     </>

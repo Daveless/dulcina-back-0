@@ -7,8 +7,8 @@ const initialState = {
   },
 };
 
-export const filter = createSlice({
-  name: "filter",
+export const cart = createSlice({
+  name: "cart",
   initialState,
   reducers: {
     ChangeCartLength: (state, action) => {
@@ -24,5 +24,5 @@ export const filter = createSlice({
 
 export const {
     ChangeCartLength,
-} = filter.actions;
-export default filter.reducer
+} = cart.actions;
+export default cart.reducer

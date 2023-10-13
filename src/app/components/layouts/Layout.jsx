@@ -22,7 +22,6 @@ const Layout = ({
         </nav>
         {/* sidebar */}
         <main className={`${padding == true ? "py-[40px]": null} text-[#222222]`}>{children}</main>
-      <footer></footer>
     </>
   );
 };
