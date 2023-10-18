@@ -3,16 +3,19 @@ import { Filters, Layout, ListProducts, UxProducts } from "../components";
 const Products = () => {
   return (
     <>
-      <Layout padding={true}  pageDescription={"Tienda online"} title={"Dulcina"}>
-      <div className="min-h-screen">
-
-        <div className=" text-black ">
-          <UxProducts/>
-          <div className="flex w-[100%] justify-between">
-            <Filters />
-            <ListProducts />
+      <Layout
+        padding={true}
+        pageDescription={"Tienda online"}
+        title={"Dulcina"}
+      >
+        <div className="min-h-screen">
+          <div className=" text-black ">
+            <UxProducts />
+            <div className="flex flex-col md:flex-row w-[90%] gap-3 mx-auto">
+              <Filters />
+              <ListProducts />
+            </div>
           </div>
-        </div>
         </div>
       </Layout>
     </>

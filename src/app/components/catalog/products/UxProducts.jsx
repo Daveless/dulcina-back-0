@@ -10,6 +10,8 @@ const UxProducts = () => {
   const categoryInputName = useSelector(
     (state) => state.filterReducer.value.byCategory.name
   );
+  const searchInput = useSelector((state) => state.searchReducer.searchInput);
+
   return (
     <div className="">
       <div className="flex justify-between mb-[20px]">
@@ -20,7 +22,7 @@ const UxProducts = () => {
         </div>
         <div className="flex w-[950px] justify-between pr-[70px] text-[#535353]">
           <div>
-            {products?.length ? <p>{products?.length} resultados</p> : null}
+            {searchInput?.length ? <p>Resultados de "{capitalize(searchInput)}"</p> : null}
           </div>
           <div className="hidden md:flex">
             <SortContainer />

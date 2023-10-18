@@ -8,16 +8,15 @@ import { useDispatch, useSelector } from "react-redux";
 const CartButton = () => {
   const cartLength = useSelector((state) => state.cartReducer.value.cartLength);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   useEffect(() => {
-    let cartLen = (JSON.parse(localStorage.getItem("cartItems")) || []).length
+    let cartLen = (JSON.parse(localStorage.getItem("cartItems")) || []).length;
 
-    dispatch(ChangeCartLength(cartLen))
+    dispatch(ChangeCartLength(cartLen));
   }, []);
 
-
   return (
-    <div>
+    <div className="hidden md:flex">
       <Link href="/cart">
         <BsCart2 size="28px" className="ml-[10px] cursor-pointer" />
         {cartLength > 0 ? (

@@ -5,6 +5,7 @@ import cartReducer from "./features/cart-slice"
 import userReducer from "./features/user-slice"
 import categoryReducer from "./features/category-slice"
 import sortReducer from "./features/sort-slice"
+import searchReducer from "./features/search-slice"
 
 export const store = configureStore({
     reducer: {
@@ -13,7 +14,8 @@ export const store = configureStore({
         cartReducer,
         userReducer,
         categoryReducer,
-        sortReducer
+        sortReducer,
+        searchReducer
     }
 })
 

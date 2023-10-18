@@ -13,6 +13,7 @@ import {
   filterAll,
   clearByCategoryFilter,
 } from "@/redux/features/filter-slice";
+import { Searchbar } from "../../ui";
 import { fetchCategories } from "@/redux/features/category-slice";
 import { capitalize } from "@/assets";
 import { TextSqueleton } from "../../ui/Squeletons";
@@ -60,8 +61,12 @@ const Filters = () => {
 
   return (
     <>
-      <div className="w-[365px] flex justify-end">
-        <div className="hidden md:flex flex-col w-[280px] ">
+      <div className="md:hidden">
+        <Searchbar />
+      </div>
+
+      <div className="w-[365px] hidden md:flex justify-end">
+        <div className="flex-col w-[280px] hidden md:flex">
           {/* <h2 className="font-extrabold text-[#222222] text-[30px]">
             Festividad
           </h2>
