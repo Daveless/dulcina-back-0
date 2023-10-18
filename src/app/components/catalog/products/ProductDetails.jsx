@@ -62,8 +62,6 @@ const ProductDetails = ({ id }) => {
 
   const productName =
     product?.name?.charAt(0).toUpperCase() + product?.name?.slice(1);
-  const description =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
   return (
     <div>
       <div className="sm:min-h-0">
@@ -100,7 +98,7 @@ const ProductDetails = ({ id }) => {
                       <div>{/* icons */}</div>
                     </div>
                     <p className="text-12px font-[300] text-[#222]">
-                      {description}
+                      {product.description}
                     </p>
 
                     {/* stock buttons
