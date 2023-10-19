@@ -22,7 +22,7 @@ const UxProducts = () => {
         </div>
         <div className="flex w-[950px] justify-between pr-[70px] text-[#535353]">
           <div>
-            {searchInput?.length ? <p>Resultados de "{capitalize(searchInput)}"</p> : null}
+            {searchInput?.length ? <p>Resultados de &quot{capitalize(searchInput)}&quot</p> : null}
           </div>
           <div className="hidden md:flex">
             <SortContainer />
