@@ -1,6 +1,7 @@
+
 "use client";
 import { loginUser } from "@/redux/features/user-slice";
-import { CallButton, FormInput, Layout } from "../components";
+import { CallButton, FormInput, Layout, LoginFrorm } from "../components";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { redirect } from "next/navigation";
@@ -34,33 +35,10 @@ const Login = () => {
     }); */
     redir();
   };
-
   return (
     <Layout pageDescription={"Tienda online"} title={"Dulcina"}>
       <div className="min-h-[605px] flex justify-center items-center">
-        <form onSubmit={onSubmit} className="w-[50%]">
-          <FormInput
-            input={input}
-            onChange={(e) => onChange(e, "email")}
-            inputName="email"
-            label={"Email"}
-            type={"text"}
-            placeholder={"ejemplo@ejemplo.com"}
-          />
-          <FormInput
-            input={input}
-            onChange={(e) => onChange(e, "password")}
-            inputName="password"
-            label={"Password"}
-            type={"password"}
-          />
-          <button
-            type="submit"
-            className="bg-[#E60023] font-bold text-[#ffffff] w-[100%] h-[55px] rounded-xl"
-          >
-            Login
-          </button>
-        </form>
+        <LoginFrorm/>
       </div>
     </Layout>
   );
