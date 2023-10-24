@@ -3,23 +3,22 @@ import { loginUser } from "@/redux/features/user-slice";
 import { CallButton, FormInput, Layout } from "../components";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import {useRouter} from "next/navigation";
+import { redirect } from "next/navigation";
 
 const Login = () => {
   const dispatch = useDispatch();
-  const rout = useRouter()
   const role = useSelector((state) => state.userReducer.role);
   const [input, setInput] = useState({
     email: "",
     password: "",
   });
-  useEffect(()=>{
-    if(role=="admin"){
-        rout.push("admin/form")
+  useEffect(() => {
+    if (role == "admin") {
+      redirect("/admin/form");
     }
-  },[role])
+  }, [role]);
   const redir = async () => {
-    const dis = await dispatch(loginUser(input));    
+    const dis = await dispatch(loginUser(input));
   };
   const onChange = (e, inputName) => {
     setInput({
@@ -29,7 +28,7 @@ const Login = () => {
   };
   const onSubmit = (e) => {
     e.preventDefault();
-   /*  setInput({
+    /*  setInput({
       email: "",
       password: "",
     }); */
