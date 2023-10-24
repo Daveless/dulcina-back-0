@@ -47,7 +47,7 @@ const CartProduct = ({
   };
   return (
     <div className="w-full grid grid-cols-[30%_70%] items-top justify-center align-middle">
-      <div className="relative grid items-top h-[7rem] w-full bg-red-400">
+      <div className="relative grid items-top h-[7rem] w-full">
         <Image
           alt="product"
           src={imageUrl}
