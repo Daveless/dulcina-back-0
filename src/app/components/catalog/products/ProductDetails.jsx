@@ -67,15 +67,15 @@ const ProductDetails = ({ id }) => {
     <div>
       <div className="sm:min-h-0">
         <div className="flex flex-col text-[#222222]  bg-[#f2f2f2]">
-          <div className="sm:grid sm:grid-cols-2 sm:h-[695px] sm:shadow-[1px_1px_19px_1px_rgba(0,0,0,0.10)]">
-            <div className="flex w-full min-h-[340px] sm:h-full mb-3 relative ">
+          <div className="sm:grid  sm:grid-cols-2 sm:h-[695px] sm:shadow-[1px_1px_19px_1px_rgba(0,0,0,0.10)]">
+            <div className="flex min-h-[340px] m-auto justify-center items-start justify-items-center sm:h-full relative w-[80%]">
               {product?.imageUrl ? (
                 <Image
                   src={product?.imageUrl}
-                  fill
                   objectFit="contain"
                   alt="product description"
-                  sizes="100vw"
+                  fill={true}
+                  className="object-scale-down rounded-xl w-full"
                 ></Image>
               ) : null}
             </div>
@@ -95,10 +95,9 @@ const ProductDetails = ({ id }) => {
 
                     <p className="text-12px font-[300] text-[#222]">
                       {product.description}
-
                     </p>
 
-                    <div className="w-24">
+                    <div className="w-24 mt-5">
                       <QuantityButton />
                     </div>
 

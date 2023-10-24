@@ -32,7 +32,7 @@ select:focus + .focus {
   width: 0.8em;
   height: 0.5em;
   background-color: #505050;
-  clippath: polygon(100% 0%, 0 0%, 50% 100%);
+  clip-path: polygon(100% 0%, 0 0%, 50% 100%);
   justify-self: end;
   position: relative;
   right: 10px;
