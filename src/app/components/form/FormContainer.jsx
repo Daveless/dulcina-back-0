@@ -5,7 +5,7 @@ import SelectInput from "./SelectInput";
 import { FormInput } from ".";
 import { postProduct } from "@/redux/features/product-slice";
 import { useDispatch, useSelector } from "react-redux";
-import { useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 import { fetchCategories } from "@/redux/features/category-slice";
 
 const FormContainer = () => {
@@ -17,22 +17,20 @@ const FormContainer = () => {
 
   const dispatch = useDispatch();
 
-  const rout = useRouter();
-
   useEffect(() => {
     dispatch(fetchCategories());
 
     if (role != "admin") {
-      rout.push("/login");
+      redirect("/login");
     }
   }, [role]);
-  const [image, setImage] = useState("");
+  const [imageUrl, setImage] = useState("");
   const [input, setInput] = useState({
     name: "",
     price: "",
     description: "",
-    highlighDate: "",
-    categoryId:1,
+    highlight_date: "",
+    categoryId: 1,
   });
   const onChange = (e, inputName) => {
     setInput({
@@ -44,9 +42,9 @@ const FormContainer = () => {
     e.preventDefault();
     let body = {
       ...input,
-      image,
-      token,
+      imageUrl,
     };
+    console.log(body);
     dispatch(postProduct(body));
   };
 
@@ -73,19 +71,26 @@ const FormContainer = () => {
             placeholder={"$80"}
             label={"Precio"}
           />
-          <FileInput image={image} setImage={setImage} />
+          <FileInput imageUrl={imageUrl} setImage={setImage} />
         </div>
         <div>
           <FormInput
             onChange={onChange}
             input={input}
-            inputName={"highlighDate"}
+            inputName={"highlight_date"}
             className={"h-[150px] "}
             type={"text"}
             placeholder={"12:12:2020"}
             label={"Fecha"}
           />
-          <SelectInput onChange={onChange} selected={input.categoryId}  options={allCategories} inputName="categoryId" firstOption={"Seleccionar"} label={"Categoría"} />
+          <SelectInput
+            onChange={onChange}
+            selected={input.categoryId}
+            options={allCategories}
+            inputName="categoryId"
+            firstOption={"Seleccionar"}
+            label={"Categoría"}
+          />
           <FormInput
             onChange={onChange}
             input={input}

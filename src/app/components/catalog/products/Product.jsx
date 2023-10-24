@@ -15,7 +15,7 @@ const Product = ({ id, name, image, price, description }) => {
   };
   return (
     <Link href={`products/${id}`}>
-      <div className="flex flex-col w-full p-3 h-full aspect-[4/3] mx-auto justify-center items-center">
+      <div className="flex w-[230px] flex-col p-3 h-full aspect-[4/3] mx-auto justify-center items-center">
         <div className="relative grid items-stretch w-full h-[300px]  ">
           <Image
             alt={name}

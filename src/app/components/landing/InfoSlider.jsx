@@ -41,34 +41,34 @@ const InfoSlider = () => {
               viewBox="0 0 136 105"
               fill="none"
             >
-              <g clip-path="url(#clip0_601_112)">
+              <g clipPath="url(#clip0_601_112)">
                 <path
                   d="M31.25 106.25C31.25 109.565 32.567 112.745 34.9112 115.089C37.2554 117.433 40.4348 118.75 43.75 118.75C47.0652 118.75 50.2446 117.433 52.5888 115.089C54.933 112.745 56.25 109.565 56.25 106.25C56.25 102.935 54.933 99.7554 52.5888 97.4112C50.2446 95.067 47.0652 93.75 43.75 93.75C40.4348 93.75 37.2554 95.067 34.9112 97.4112C32.567 99.7554 31.25 102.935 31.25 106.25Z"
                   stroke="white"
-                  stroke-width="9"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="9"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M93.75 106.25C93.75 109.565 95.067 112.745 97.4112 115.089C99.7554 117.433 102.935 118.75 106.25 118.75C109.565 118.75 112.745 117.433 115.089 115.089C117.433 112.745 118.75 109.565 118.75 106.25C118.75 102.935 117.433 99.7554 115.089 97.4112C112.745 95.067 109.565 93.75 106.25 93.75C102.935 93.75 99.7554 95.067 97.4112 97.4112C95.067 99.7554 93.75 102.935 93.75 106.25Z"
                   stroke="white"
-                  stroke-width="9"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="9"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M31.25 106.25H18.75V81.25M12.5 31.25H81.25V106.25M56.25 106.25H93.75M118.75 106.25H131.25V68.75M131.25 68.75H81.25M131.25 68.75L112.5 37.5H81.25"
                   stroke="white"
-                  stroke-width="9"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="9"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M18.75 56.25H43.75"
                   stroke="white"
-                  stroke-width="9"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="9"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </g>
               <defs>
@@ -78,7 +78,9 @@ const InfoSlider = () => {
               </defs>
             </svg>
             <p className="w-full text-[30px] font-bold">{images[0].caption}</p>
-            <p className="w-full text-[16px] font-extralight ">{images[0].desc}</p>
+            <p className="w-full text-[16px] font-extralight ">
+              {images[0].desc}
+            </p>
           </div>
           <div className="items-center justify-center mx-auto text-center flex flex-col">
             <svg
@@ -95,13 +97,15 @@ const InfoSlider = () => {
               <path
                 d="M52.4751 68.75V43.75C52.4751 37.1196 55.2394 30.7607 60.1599 26.0723C65.0804 21.3839 71.7541 18.75 78.7127 18.75C85.6714 18.75 92.345 21.3839 97.2655 26.0723C102.186 30.7607 104.95 37.1196 104.95 43.75V68.75"
                 stroke="white"
-                stroke-width="12"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="12"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
             <p className="w-full text-[30px] font-bold">{images[1].caption}</p>
-            <p className="w-full text-[16px] font-extralight">{images[1].desc}</p>
+            <p className="w-full text-[16px] font-extralight">
+              {images[1].desc}
+            </p>
           </div>
           <div className="items-center justify-center mx-auto text-center flex flex-col">
             <svg
@@ -111,13 +115,13 @@ const InfoSlider = () => {
               viewBox="0 0 120 120"
               fill="none"
             >
-              <g clip-path="url(#clip0_602_127)">
+              <g clipPath="url(#clip0_602_127)">
                 <path
                   d="M60.0002 88.7498L29.1402 104.975L35.0352 70.6098L10.0352 46.2748L44.5352 41.2748L59.9652 10.0098L75.3952 41.2748L109.895 46.2748L84.8952 70.6098L90.7902 104.975L60.0002 88.7498Z"
                   stroke="white"
-                  stroke-width="10"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="10"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </g>
               <defs>
@@ -127,7 +131,9 @@ const InfoSlider = () => {
               </defs>
             </svg>
             <p className="w-full text-[30px] font-bold">{images[2].caption}</p>
-            <p className="w-full text-[16px] font-extralight">{images[2].desc}</p>
+            <p className="w-full text-[16px] font-extralight">
+              {images[2].desc}
+            </p>
           </div>
         </div>
         <div className="h-[60%] m-auto px-5 text-center grid grid-rows-[60%_15%_30%] justify-center items-center justify-items-center md:hidden">
@@ -139,34 +145,34 @@ const InfoSlider = () => {
               viewBox="0 0 136 105"
               fill="none"
             >
-              <g clip-path="url(#clip0_601_112)">
+              <g clipPath="url(#clip0_601_112)">
                 <path
                   d="M31.25 106.25C31.25 109.565 32.567 112.745 34.9112 115.089C37.2554 117.433 40.4348 118.75 43.75 118.75C47.0652 118.75 50.2446 117.433 52.5888 115.089C54.933 112.745 56.25 109.565 56.25 106.25C56.25 102.935 54.933 99.7554 52.5888 97.4112C50.2446 95.067 47.0652 93.75 43.75 93.75C40.4348 93.75 37.2554 95.067 34.9112 97.4112C32.567 99.7554 31.25 102.935 31.25 106.25Z"
                   stroke="white"
-                  stroke-width="9"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="9"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M93.75 106.25C93.75 109.565 95.067 112.745 97.4112 115.089C99.7554 117.433 102.935 118.75 106.25 118.75C109.565 118.75 112.745 117.433 115.089 115.089C117.433 112.745 118.75 109.565 118.75 106.25C118.75 102.935 117.433 99.7554 115.089 97.4112C112.745 95.067 109.565 93.75 106.25 93.75C102.935 93.75 99.7554 95.067 97.4112 97.4112C95.067 99.7554 93.75 102.935 93.75 106.25Z"
                   stroke="white"
-                  stroke-width="9"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="9"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M31.25 106.25H18.75V81.25M12.5 31.25H81.25V106.25M56.25 106.25H93.75M118.75 106.25H131.25V68.75M131.25 68.75H81.25M131.25 68.75L112.5 37.5H81.25"
                   stroke="white"
-                  stroke-width="9"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="9"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M18.75 56.25H43.75"
                   stroke="white"
-                  stroke-width="9"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="9"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </g>
               <defs>
@@ -191,9 +197,9 @@ const InfoSlider = () => {
               <path
                 d="M52.4751 68.75V43.75C52.4751 37.1196 55.2394 30.7607 60.1599 26.0723C65.0804 21.3839 71.7541 18.75 78.7127 18.75C85.6714 18.75 92.345 21.3839 97.2655 26.0723C102.186 30.7607 104.95 37.1196 104.95 43.75V68.75"
                 stroke="white"
-                stroke-width="12"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="12"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
           )}
@@ -205,13 +211,13 @@ const InfoSlider = () => {
               viewBox="0 0 120 120"
               fill="none"
             >
-              <g clip-path="url(#clip0_602_127)">
+              <g clipPath="url(#clip0_602_127)">
                 <path
                   d="M60.0002 88.7498L29.1402 104.975L35.0352 70.6098L10.0352 46.2748L44.5352 41.2748L59.9652 10.0098L75.3952 41.2748L109.895 46.2748L84.8952 70.6098L90.7902 104.975L60.0002 88.7498Z"
                   stroke="white"
-                  stroke-width="10"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="10"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </g>
               <defs>
