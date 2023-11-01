@@ -1,6 +1,6 @@
 "use client";
 import { changeSearchInput } from "@/redux/features/search-slice";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { HiOutlineSearch } from "react-icons/hi";
 import { useDispatch } from "react-redux";
@@ -16,7 +16,7 @@ const Searchbar = () => {
   const onSearch = (e) => {
     e.preventDefault();
     dispatch(changeSearchInput(input));
-    rout.push("/products");
+    redirect("/products");
 
     setInput("");
   };
