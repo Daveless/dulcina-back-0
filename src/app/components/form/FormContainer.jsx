@@ -19,6 +19,7 @@ const FormContainer = () => {
 
   useEffect(() => {
     dispatch(fetchCategories());
+    console.log(role);
 
     if (role != "admin") {
       redirect("/login");
