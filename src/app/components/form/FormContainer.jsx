@@ -18,13 +18,9 @@ const FormContainer = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchCategories());
-    setTimeout(() => {
-      console.log(role);
-      if (role != "admin") {
-        redirect("/login");
-      }
-    }, 10000);
+    if (role != "admin") {
+      redirect("/login");
+    }
   }, [role]);
   const [image, setImage] = useState("");
   const [input, setInput] = useState({
