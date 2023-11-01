@@ -48,9 +48,7 @@ const FormContainer = () => {
     if (role != "admin") {
       redirect("/login");
     }
-  }, [role]);
-
-  useEffect(() => {}, []);
+  }, []);
 
   return (
     <>
