@@ -15,11 +15,15 @@ const LoginFrorm = () => {
   });
   useEffect(() => {
     if (role == "admin") {
-      setTimeout(() => {
-        redirect("admin/form");
-      }, 5000);
+      rout.push(
+        {
+          pathname: "/form",
+        },
+        undefined,
+        { shallow: true }
+      );
     }
-  }, []);
+  }, [role]);
 
   const redir = async () => {
     const dis = await dispatch(loginUser(input));
