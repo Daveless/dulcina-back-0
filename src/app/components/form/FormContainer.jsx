@@ -41,14 +41,6 @@ const FormContainer = () => {
     console.log(body);
     dispatch(postProduct(body));
   };
-  useEffect(() => {
-    console.log(role);
-    dispatch(fetchCategories());
-
-    if (role != "admin") {
-      redirect("/login");
-    }
-  }, []);
 
   return (
     <>
