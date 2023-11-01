@@ -17,15 +17,6 @@ const FormContainer = () => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    console.log(role);
-    dispatch(fetchCategories());
-    setTimeout(() => {
-      if (role != "admin") {
-        redirect("/login");
-      }
-    }, 300);
-  }, [role]);
   const [image, setImage] = useState("");
   const [input, setInput] = useState({
     name: "",
@@ -50,6 +41,15 @@ const FormContainer = () => {
     console.log(body);
     dispatch(postProduct(body));
   };
+  useEffect(() => {
+    console.log(role);
+    dispatch(fetchCategories());
+    setTimeout(() => {
+      if (role != "admin") {
+        redirect("/login");
+      }
+    }, 300);
+  }, [role]);
 
   return (
     <>
