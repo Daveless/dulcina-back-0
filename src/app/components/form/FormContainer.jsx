@@ -42,10 +42,12 @@ const FormContainer = () => {
     dispatch(postProduct(body));
   };
   useEffect(() => {
+    console.log("asdasd");
     console.log(role);
+    console.log("nopo");
 
     if (role != "admin") {
-      redirect("/login");
+      () => redirect("/login");
     }
   }, []);
 
