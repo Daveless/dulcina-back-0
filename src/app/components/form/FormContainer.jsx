@@ -44,11 +44,10 @@ const FormContainer = () => {
   useEffect(() => {
     console.log(role);
     dispatch(fetchCategories());
-    setTimeout(() => {
-      if (role != "admin") {
-        redirect("/login");
-      }
-    }, 300);
+
+    if (role != "admin") {
+      redirect("/login");
+    }
   }, [role]);
 
   return (
