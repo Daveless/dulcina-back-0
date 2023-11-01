@@ -24,13 +24,14 @@ const FormContainer = () => {
       redirect("/login");
     }
   }, [role]);
-  const [imageUrl, setImage] = useState("");
+  const [image, setImage] = useState("");
   const [input, setInput] = useState({
     name: "",
     price: "",
     description: "",
     highlight_date: "",
     categoryId: 1,
+    token,
   });
   const onChange = (e, inputName) => {
     setInput({
@@ -42,7 +43,7 @@ const FormContainer = () => {
     e.preventDefault();
     let body = {
       ...input,
-      imageUrl,
+      image,
     };
     console.log(body);
     dispatch(postProduct(body));
@@ -71,7 +72,7 @@ const FormContainer = () => {
             placeholder={"$80"}
             label={"Precio"}
           />
-          <FileInput imageUrl={imageUrl} setImage={setImage} />
+          <FileInput setImage={setImage} />
         </div>
         <div>
           <FormInput

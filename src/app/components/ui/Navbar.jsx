@@ -3,6 +3,12 @@ import Link from "next/link";
 import { useState } from "react";
 import { AiOutlineHeart } from "react-icons/ai";
 import { CartButton, Searchbar } from ".";
+import { Lobster } from "next/font/google";
+const lobster = Lobster({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400"],
+});
 
 const Navbar = () => {
   const [isShown, setIsShown] = useState(false);
@@ -12,7 +18,9 @@ const Navbar = () => {
   return (
     <div className="md:flex grid grid-cols-2 px-4 md:grid-cols-[20%_80%] w-full md:h-[70px] justify-center content-center z-40 bg-[#ffffff]">
       <Link className="flex items-center" href="/">
-        <h1 className="text-bold text-center text-3xl font-lobster">Dulcina</h1>
+        <h1 className={`text-bold text-center text-3xl ${lobster.className}`}>
+          Dulcina
+        </h1>
       </Link>
       <div className="flex flex-row justify-end gap-5 items-center md:hidden md:mb-0 mb-2">
         <Link href="/cart">

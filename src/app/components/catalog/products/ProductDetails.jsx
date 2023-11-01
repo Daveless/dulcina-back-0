@@ -14,6 +14,26 @@ import QuantityButton from "./QuantityButton";
 const ProductDetails = ({ id }) => {
   const dispatch = useDispatch();
   const product = useSelector((state) => state.productsReducer.product);
+  const toggleSlashAsterisco = (texto) => {
+    if (texto.includes("/")) {
+      // Reemplazar todas las ocurrencias de "/" por "*"
+      const textoModificado = texto
+        .split("")
+        .map((c) => (c === "/" ? "*" : c))
+        .join("");
+      return textoModificado;
+    } else if (texto.includes("*")) {
+      // Reemplazar todas las ocurrencias de "*" por "/"
+      const textoModificado = texto
+        .split("")
+        .map((c) => (c === "*" ? "/" : c))
+        .join("");
+      return textoModificado;
+    } else {
+      // Si no hay ni "/" ni "*", devolver el mismo texto
+      return texto;
+    }
+  };
 
   useEffect(() => {
     dispatch(fetchProduct(id));
@@ -71,7 +91,7 @@ const ProductDetails = ({ id }) => {
             <div className="flex min-h-[340px] m-auto justify-center items-start justify-items-center sm:h-full relative w-[80%]">
               {product?.imageUrl ? (
                 <Image
-                  src={product?.imageUrl}
+                  src={toggleSlashAsterisco(product?.imageUrl)}
                   objectFit="contain"
                   alt="product description"
                   fill={true}

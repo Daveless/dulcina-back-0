@@ -7,6 +7,27 @@ const montserrat = Montserrat({
   weight: ["600", "400"],
 });
 
+function toggleSlashAsterisco(texto) {
+  if (texto.includes("/")) {
+    // Reemplazar todas las ocurrencias de "/" por "*"
+    const textoModificado = texto
+      .split("")
+      .map((c) => (c === "/" ? "*" : c))
+      .join("");
+    return textoModificado;
+  } else if (texto.includes("*")) {
+    // Reemplazar todas las ocurrencias de "*" por "/"
+    const textoModificado = texto
+      .split("")
+      .map((c) => (c === "*" ? "/" : c))
+      .join("");
+    return textoModificado;
+  } else {
+    // Si no hay ni "/" ni "*", devolver el mismo texto
+    return texto;
+  }
+}
+
 const Product = ({ id, name, image, price, description }) => {
   const convertToDecimal = (num) => {
     let convertedNumber = 0;
@@ -20,11 +41,11 @@ const Product = ({ id, name, image, price, description }) => {
   };
   return (
     <Link href={`products/${id}`}>
-      <div className="flex w-[230px] flex-col p-3 h-full aspect-[4/3] mx-auto justify-center items-start">
+      <div className="flex w-full flex-col p-3 h-full aspect-[5/3] mx-auto justify-center items-start">
         <div className="relative grid justify-start items-start w-full h-[300px]  ">
           <Image
             alt={name}
-            src={image}
+            src={toggleSlashAsterisco(image)}
             fill={true}
             className="object-scale-down rounded-xl w-full absolute"
           />
