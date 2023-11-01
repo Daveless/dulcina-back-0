@@ -1,7 +1,7 @@
 "use client";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { FormInput } from ".";
 import { loginUser } from "@/redux/features/user-slice";
 
@@ -15,9 +15,11 @@ const LoginFrorm = () => {
   });
   useEffect(() => {
     if (role == "admin") {
-      redirect("admin/form");
+      setTimeout(() => {
+        redirect("admin/form");
+      }, 5000);
     }
-  }, [role]);
+  }, []);
 
   const redir = async () => {
     const dis = await dispatch(loginUser(input));
