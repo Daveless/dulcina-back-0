@@ -15,7 +15,6 @@ const FormContainer = () => {
   const allCategories = useSelector(
     (state) => state.categoryReducer.allCategories.categories
   );
-
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -46,12 +45,14 @@ const FormContainer = () => {
 
   const redirect = useCallback(async () => {
     try {
-      console.log("antes de redireccionar");
       console.log(role ? "el rol es" + role : "no existe rol");
       // you could call also call `router.replace`
-      if (role !== "admin") console.log("admin no existe - verificación");
+      if (role !== "admin") {
+        console.log("admin no existe - verificación - se redirige");
+        return;
+      }
 
-      console.log("admin correcto, post verification");
+      console.log("admin correcto, no pasa nada");
       // handle any response errors here
     } catch (error) {
       console.log(error);

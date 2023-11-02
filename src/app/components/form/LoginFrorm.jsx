@@ -18,13 +18,11 @@ const LoginFrorm = () => {
     const dis = await dispatch(loginUser(input));
     if (dis.payload.user.role !== "admin") {
       console.log("entró en el if");
-      console.log("el rol es " + dis.payload.user.role);
-      console.log("el rol no era admin");
+      console.log("el rol es " + dis.payload.user.role + "en el login");
     } else {
-      console.log("el rol si era admin");
-      router.replace("/admin/form");
+      console.log("el rol si era admin y redirecciona");
+      router.push("admin/form");
     }
-    console.log("por alguna razon no redirecciona");
   };
   const onChange = (e, inputName) => {
     setInput({
