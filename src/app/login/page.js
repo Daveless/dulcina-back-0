@@ -12,28 +12,15 @@ const Login = () => {
     email: "",
     password: "",
   });
-  useEffect(() => {
-    console.log(role);
-    if (role == "admin") {
-      redirect("/admin/form");
-    }
-  }, [role]);
   const redir = async () => {
     const dis = await dispatch(loginUser(input));
+    console.log(dis);
   };
   const onChange = (e, inputName) => {
     setInput({
       ...input,
       [inputName]: e.target.value,
     });
-  };
-  const onSubmit = (e) => {
-    e.preventDefault();
-    /*  setInput({
-      email: "",
-      password: "",
-    }); */
-    redir();
   };
   return (
     <Layout pageDescription={"Tienda online"} title={"Dulcina"}>

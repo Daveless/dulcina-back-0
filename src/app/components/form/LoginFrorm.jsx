@@ -16,7 +16,15 @@ const LoginFrorm = () => {
 
   const redir = async () => {
     const dis = await dispatch(loginUser(input));
-    if (dis.payload.user.role == "admin") router.push("/login");
+    if (dis.payload.user.role !== "admin") {
+      console.log("entró en el if");
+      console.log("el rol es " + dis.payload.user.role);
+      console.log("el rol no era admin");
+    } else {
+      console.log("el rol si era admin");
+      router.replace("/admin/form");
+    }
+    console.log("por alguna razon no redirecciona");
   };
   const onChange = (e, inputName) => {
     setInput({
