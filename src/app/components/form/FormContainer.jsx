@@ -1,12 +1,13 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import FileInput from "./FileInput";
 import SelectInput from "./SelectInput";
 import { FormInput } from ".";
 import { postProduct } from "@/redux/features/product-slice";
 import { useDispatch, useSelector } from "react-redux";
-import { redirect } from "next/navigation";
+
 import { fetchCategories } from "@/redux/features/category-slice";
+import { useRouter } from "next/navigation";
 
 const FormContainer = () => {
   const token = useSelector((state) => state.userReducer.token);
@@ -16,6 +17,7 @@ const FormContainer = () => {
   );
 
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const [image, setImage] = useState("");
   const [input, setInput] = useState({
@@ -41,14 +43,25 @@ const FormContainer = () => {
     console.log(body);
     dispatch(postProduct(body));
   };
-  useEffect(() => {
-    console.log(role);
-    dispatch(fetchCategories());
 
-    if (role != "admin") {
-      redirect("/login");
+  const redirect = useCallback(async () => {
+    try {
+      console.log(role);
+      // you could call also call `router.replace`
+      if (role !== "admin") router.replace("/login");
+
+      // handle any response errors here
+    } catch (error) {
+      console.log(error);
     }
   }, [role]);
+
+  useEffect(() => {
+    // you could also define the function here without `useCallback`,
+    // this is only done when the function only needs to be called
+    // inside the effect.
+    redirect();
+  }, []);
 
   return (
     <>

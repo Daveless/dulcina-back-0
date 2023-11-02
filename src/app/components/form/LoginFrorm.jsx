@@ -13,26 +13,10 @@ const LoginFrorm = () => {
     email: "",
     password: "",
   });
-  const redirect = useCallback(async () => {
-    try {
-      // you could call also call `router.replace`
-      if (role !== "admin") console.log("no role specified");
-
-      // handle any response errors here
-    } catch (error) {
-      console.log(error);
-    }
-  }, [role]);
-
-  useEffect(() => {
-    // you could also define the function here without `useCallback`,
-    // this is only done when the function only needs to be called
-    // inside the effect.
-    redirect();
-  }, []);
 
   const redir = async () => {
     const dis = await dispatch(loginUser(input));
+    if (dis.payload.user.role == "admin") router.push("/login");
   };
   const onChange = (e, inputName) => {
     setInput({
