@@ -1,29 +1,35 @@
 "use client";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useEffect, useState, useCallback } from "react";
 import { FormInput } from ".";
 import { loginUser } from "@/redux/features/user-slice";
+import { useRouter } from "next/navigation";
 
 const LoginFrorm = () => {
   const dispatch = useDispatch();
-  const rout = useRouter();
+  const router = useRouter();
   const role = useSelector((state) => state.userReducer.role);
   const [input, setInput] = useState({
     email: "",
     password: "",
   });
-  useEffect(() => {
-    if (role == "admin") {
-      rout.push(
-        {
-          pathname: "/form",
-        },
-        undefined,
-        { shallow: true }
-      );
+  const redirect = useCallback(async () => {
+    try {
+      // you could call also call `router.replace`
+      if (role !== "admin") console.log("no role specified");
+
+      // handle any response errors here
+    } catch (error) {
+      console.log(error);
     }
   }, [role]);
+
+  useEffect(() => {
+    // you could also define the function here without `useCallback`,
+    // this is only done when the function only needs to be called
+    // inside the effect.
+    redirect();
+  }, []);
 
   const redir = async () => {
     const dis = await dispatch(loginUser(input));
