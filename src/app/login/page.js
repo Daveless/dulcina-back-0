@@ -8,7 +8,6 @@ import { redirect } from "next/navigation";
 const Login = () => {
   const dispatch = useDispatch();
   const role = useSelector((state) => state.userReducer.role);
-  console.log(role);
   const [input, setInput] = useState({
     email: "",
     password: "",

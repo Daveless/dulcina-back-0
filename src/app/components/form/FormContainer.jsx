@@ -46,10 +46,12 @@ const FormContainer = () => {
 
   const redirect = useCallback(async () => {
     try {
-      console.log(role);
+      console.log("antes de redireccionar");
+      console.log(role ? "el rol es" + role : "no existe rol");
       // you could call also call `router.replace`
-      if (role !== "admin") router.replace("/login");
+      if (role !== "admin") console.log("admin no existe - verificación");
 
+      console.log("admin correcto, post verification");
       // handle any response errors here
     } catch (error) {
       console.log(error);
