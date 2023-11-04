@@ -16,7 +16,7 @@ const Navbar = () => {
     setIsShown(!isShown);
   };
   return (
-    <div className="md:flex grid grid-cols-2 px-4 md:grid-cols-[20%_80%] w-full md:h-[70px] justify-center content-center z-40 bg-[#ffffff]">
+    <div className="md:flex grid grid-cols-2 px-4 md:grid-cols-[20%_80%] md:px-12 w-full md:h-[70px] justify-center content-center z-40 bg-[#ffffff]">
       <Link className="flex items-center" href="/">
         <h1 className={`text-bold text-center text-3xl ${lobster.className}`}>
           Dulcina

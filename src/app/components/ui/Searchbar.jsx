@@ -23,7 +23,7 @@ const Searchbar = () => {
   return (
     <>
       <form onSubmit={onSearch}>
-        <div className="flex pl-[20px] text-[#222222] pr-[20px] bg-[#f2f2f2] h-[35px] items-center justify-between rounded-3xl">
+        <div className="flex pl-[20px] ml-10 text-[#222222] md:min-w-[350px] pr-[20px] bg-[#f2f2f2] h-[35px] items-center justify-between rounded-3xl">
           <input
             className="bg-[#f2f2f2] focus:outline-none"
             placeholder={`Buscar...`}
