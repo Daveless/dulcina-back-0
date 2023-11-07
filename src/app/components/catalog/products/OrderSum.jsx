@@ -37,7 +37,8 @@ const OrderSum = ({ cartProducts }) => {
     <div className="w-full sm:bg-white  md:p-4 max-w-[380px] m-auto">
       <h3 className="hidden md:flex font-bold text-lg">Resumen de la Orden</h3>
       <div className="flex justify-between text-[#797979] text-sm my-2">
-        <p>Subtotal</p> <p>${convertToDecimal(precioTotal)}</p>
+        <p>Subtotal</p>{" "}
+        <p>${cartProducts ? convertToDecimal(precioTotal) : "0.00"}</p>
       </div>
       <div className="flex justify-between text-[#797979] text-sm my-2">
         <p>Estimación de envio</p> <p>${shippingValue + ".00"}</p>

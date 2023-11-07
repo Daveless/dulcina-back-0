@@ -10,34 +10,16 @@ import { fetchProduct } from "@/redux/features/product-slice";
 import RelatedProducts from "./RelatedProducts";
 import convertToDecimal from "@/assets/toDecimal";
 import QuantityButton from "./QuantityButton";
+import toggleSlashAsterisco from "@/assets/toggleSlashAsterisco";
 
 const ProductDetails = ({ id }) => {
   const dispatch = useDispatch();
   const product = useSelector((state) => state.productsReducer.product);
-  const toggleSlashAsterisco = (texto) => {
-    if (texto.includes("/")) {
-      // Reemplazar todas las ocurrencias de "/" por "*"
-      const textoModificado = texto
-        .split("")
-        .map((c) => (c === "/" ? "*" : c))
-        .join("");
-      return textoModificado;
-    } else if (texto.includes("*")) {
-      // Reemplazar todas las ocurrencias de "*" por "/"
-      const textoModificado = texto
-        .split("")
-        .map((c) => (c === "*" ? "/" : c))
-        .join("");
-      return textoModificado;
-    } else {
-      // Si no hay ni "/" ni "*", devolver el mismo texto
-      return texto;
-    }
-  };
 
   useEffect(() => {
     dispatch(fetchProduct(id));
   }, []);
+
   const handleAddToCart = () => {
     // Obtener los datos del producto seleccionado
     const localProduct = {
@@ -91,7 +73,7 @@ const ProductDetails = ({ id }) => {
             <div className="flex min-h-[340px] m-auto justify-center items-start justify-items-center sm:h-full relative w-[80%]">
               {product?.imageUrl ? (
                 <Image
-                  src={toggleSlashAsterisco(product?.imageUrl)}
+                  src={toggleSlashAsterisco(product.imageUrl)}
                   objectFit="contain"
                   alt="product description"
                   fill={true}
