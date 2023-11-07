@@ -17,10 +17,10 @@ const CitySelector = ({ cityChange, setCityChange }) => {
             <div
               className={`${
                 showCityMenu ? "flex" : "hidden"
-              } absolute left-[-2px] border-solid border-2 border-[#d1d1d1] top-[2.8rem] text-[0.9rem] px-3 flex flex-col w-full bg-[#f8f8f8] gap-1`}
+              } absolute left-[-2px] border-solid border-2  border-[#d1d1d1] top-[2.8rem] text-[0.9rem] px-3 flex flex-col w-full bg-[#f8f8f8] gap-1`}
             >
               <p
-                className="border-solid border-[#d1d1d1]"
+                className="border-solid border-[#d1d1d1] text-[#797979]"
                 onClick={() => {
                   setCityChange("Ibarra");
                   setShowCityMenu(false);
@@ -29,7 +29,7 @@ const CitySelector = ({ cityChange, setCityChange }) => {
                 Ibarra
               </p>
               <p
-                className="border-solid border-[#d1d1d1]"
+                className="border-solid border-[#d1d1d1] text-[#797979]"
                 onClick={() => {
                   setCityChange("Otavalo");
                   setShowCityMenu(false);
@@ -38,7 +38,7 @@ const CitySelector = ({ cityChange, setCityChange }) => {
                 Otavalo
               </p>
               <p
-                className="border-solid border-[#d1d1d1]"
+                className="border-solid border-[#d1d1d1] text-[#797979]"
                 onClick={() => {
                   setCityChange("Atuntaqui");
                   setShowCityMenu(false);

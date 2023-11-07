@@ -64,6 +64,7 @@ const FormContainer = () => {
     // this is only done when the function only needs to be called
     // inside the effect.
     redirect();
+    dispatch(fetchCategories());
   }, []);
 
   return (

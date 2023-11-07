@@ -3,6 +3,7 @@ import { ChangeCartLength } from "@/redux/features/cart-slice";
 import Image from "next/image";
 import { useDispatch } from "react-redux";
 import QuantityButton from "./QuantityButton";
+import toggleSlashAsterisco from "@/assets/toggleSlashAsterisco";
 
 const CartProduct = ({
   id,
@@ -50,7 +51,7 @@ const CartProduct = ({
       <div className="relative grid items-top h-[7rem] w-full">
         <Image
           alt="product"
-          src={imageUrl}
+          src={toggleSlashAsterisco(imageUrl)}
           fill={true}
           className="object-scale-down rounded-xl w-full absolute"
         />
