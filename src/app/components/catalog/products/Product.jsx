@@ -28,7 +28,7 @@ function toggleSlashAsterisco(texto) {
   }
 }
 
-const Product = ({ id, name, image, price, description }) => {
+const Product = ({ id, name, image, price, slider }) => {
   const convertToDecimal = (num) => {
     let convertedNumber = 0;
     if (num?.toString().length == 3) {
@@ -41,7 +41,13 @@ const Product = ({ id, name, image, price, description }) => {
   };
   return (
     <Link href={`products/${id}`}>
-      <div className="flex w-full flex-col p-3 h-full aspect-[5/3] mx-auto justify-center items-start">
+      <div
+        className={`flex ${
+          slider ? "w-[290px]" : "w-full"
+        } flex-col p-3 h-full ${
+          slider ? "aspect-square" : "aspect-[5/3]"
+        } mx-auto justify-center items-start`}
+      >
         <div className="relative grid justify-start items-start w-full h-[300px]  ">
           <Image
             alt={name}

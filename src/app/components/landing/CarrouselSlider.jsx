@@ -8,12 +8,12 @@ const CarrouselSlider = ({ products }) => {
       {products
         ? products?.map((p) => (
             <Product
-              className="snap-center"
               key={p?.id}
               id={p?.id}
               name={p?.name}
               image={p?.imageUrl}
               price={p?.price}
+              slider={true}
             />
           ))
         : [1, 2, 3, 4].map((p) => <ProductSqueleton key={p} />)}

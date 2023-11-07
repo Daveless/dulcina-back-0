@@ -5,6 +5,7 @@ import convertToDecimal from "@/assets/toDecimal";
 import { CallButton } from "../..";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
+import { patchTimesSoldProduct } from "@/redux/features/product-slice";
 
 const OrderSum = ({ cartProducts }) => {
   const dispatch = useDispatch();
