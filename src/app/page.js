@@ -39,9 +39,9 @@ export default function Home() {
         </section>
       </LandingLayout>
 
-      <div>
+      {/* <div>
         <Carrousel />
-      </div>
+      </div> */}
       <div>
         <div />
         <InfoSlider />
