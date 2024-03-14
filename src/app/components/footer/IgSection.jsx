@@ -22,7 +22,7 @@ const IgSection = () => {
       >
         <BsInstagram size={"60px"} />
       </ImageItem>
-      
+
       <ImageItem
         h={"300px"}
         w={"283.4px"}

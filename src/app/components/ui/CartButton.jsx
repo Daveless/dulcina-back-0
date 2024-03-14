@@ -20,7 +20,7 @@ const CartButton = () => {
       <Link href="/cart">
         <BsCart2 size="28px" className="ml-[10px] cursor-pointer" />
         {cartLength > 0 ? (
-          <span className="absolute -top-1 -right-2 text-[13px] bg-red-600 h-[18px] w-[18px] rounded-full grid place-items-center text-white">
+          <span className="absolute -top-1 -right-2 text-[13px]h-[18px] w-[18px] rounded-full grid place-items-center text-white">
             {cartLength}
           </span>
         ) : null}

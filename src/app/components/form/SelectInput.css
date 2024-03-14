@@ -36,7 +36,6 @@ select:focus + .focus {
   justify-self: end;
   position: relative;
   right: 10px;
-
 }
 select,
 .select:after {

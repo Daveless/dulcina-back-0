@@ -1,12 +1,13 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import FileInput from "./FileInput";
 import SelectInput from "./SelectInput";
 import { FormInput } from ".";
 import { postProduct } from "@/redux/features/product-slice";
 import { useDispatch, useSelector } from "react-redux";
-import { useRouter } from "next/navigation";
+
 import { fetchCategories } from "@/redux/features/category-slice";
+import { useRouter } from "next/navigation";
 
 const FormContainer = () => {
   const token = useSelector((state) => state.userReducer.token);
@@ -14,25 +15,17 @@ const FormContainer = () => {
   const allCategories = useSelector(
     (state) => state.categoryReducer.allCategories.categories
   );
-
   const dispatch = useDispatch();
+  const router = useRouter();
 
-  const rout = useRouter();
-
-  useEffect(() => {
-    dispatch(fetchCategories());
-
-    if (role != "admin") {
-      rout.push("/login");
-    }
-  }, [role]);
   const [image, setImage] = useState("");
   const [input, setInput] = useState({
     name: "",
     price: "",
     description: "",
-    highlighDate: "",
-    categoryId:1,
+    highlight_date: "",
+    categoryId: 1,
+    token,
   });
   const onChange = (e, inputName) => {
     setInput({
@@ -45,10 +38,34 @@ const FormContainer = () => {
     let body = {
       ...input,
       image,
-      token,
     };
+    console.log(body);
     dispatch(postProduct(body));
   };
+
+  const redirect = useCallback(async () => {
+    try {
+      console.log(role ? "el rol es" + role : "no existe rol");
+      // you could call also call `router.replace`
+      if (role !== "admin") {
+        console.log("admin no existe - verificación - se redirige");
+        return;
+      }
+
+      console.log("admin correcto, no pasa nada");
+      // handle any response errors here
+    } catch (error) {
+      console.log(error);
+    }
+  }, [role]);
+
+  useEffect(() => {
+    // you could also define the function here without `useCallback`,
+    // this is only done when the function only needs to be called
+    // inside the effect.
+    redirect();
+    dispatch(fetchCategories());
+  }, []);
 
   return (
     <>
@@ -73,19 +90,26 @@ const FormContainer = () => {
             placeholder={"$80"}
             label={"Precio"}
           />
-          <FileInput image={image} setImage={setImage} />
+          <FileInput setImage={setImage} />
         </div>
         <div>
           <FormInput
             onChange={onChange}
             input={input}
-            inputName={"highlighDate"}
+            inputName={"highlight_date"}
             className={"h-[150px] "}
             type={"text"}
             placeholder={"12:12:2020"}
             label={"Fecha"}
           />
-          <SelectInput onChange={onChange} selected={input.categoryId}  options={allCategories} inputName="categoryId" firstOption={"Seleccionar"} label={"Categoría"} />
+          <SelectInput
+            onChange={onChange}
+            selected={input.categoryId}
+            options={allCategories}
+            inputName="categoryId"
+            firstOption={"Seleccionar"}
+            label={"Categoría"}
+          />
           <FormInput
             onChange={onChange}
             input={input}

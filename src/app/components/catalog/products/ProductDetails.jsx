@@ -5,29 +5,32 @@ import { ChangeCartLength } from "@/redux/features/cart-slice";
 import toast, { Toaster } from "react-hot-toast";
 import { BsFillCartCheckFill } from "react-icons/bs";
 import Image from "next/image";
-import { BsChevronDown } from "react-icons/bs";
 import { useEffect } from "react";
 import { fetchProduct } from "@/redux/features/product-slice";
 import RelatedProducts from "./RelatedProducts";
 import convertToDecimal from "@/assets/toDecimal";
+import QuantityButton from "./QuantityButton";
+import toggleSlashAsterisco from "@/assets/toggleSlashAsterisco";
 
 const ProductDetails = ({ id }) => {
   const dispatch = useDispatch();
   const product = useSelector((state) => state.productsReducer.product);
+
   useEffect(() => {
     dispatch(fetchProduct(id));
   }, []);
+
   const handleAddToCart = () => {
     // Obtener los datos del producto seleccionado
     const localProduct = {
-      id: product.id,
-      name: product.name,
-      price: product.price,
-      description: product.description,
+      id: product?.id,
+      name: product?.name,
+      price: product?.price,
+      description: product?.description,
       quantity: 1,
-      times_sold: product.times_sold,
+      times_sold: product?.times_sold,
       //options: product.options,
-      imageUrl: product.imageUrl,
+      imageUrl: product?.imageUrl,
     };
 
     // Obtener el carrito actual desde el localStorage
@@ -66,21 +69,15 @@ const ProductDetails = ({ id }) => {
     <div>
       <div className="sm:min-h-0">
         <div className="flex flex-col text-[#222222]  bg-[#f2f2f2]">
-          {/*
-          <div className="w-[90%] mx-auto flex my-3 justify-between">
-            <BsArrowLeftCircle size={25} />
-            <BsShare size={25} />
-          </div>
-          */}
-          <div className="sm:grid sm:grid-cols-2 sm:h-[695px] sm:shadow-[1px_1px_19px_1px_rgba(0,0,0,0.10)]">
-            <div className="flex w-full min-h-[340px] sm:h-full mb-3 relative ">
+          <div className="sm:grid  sm:grid-cols-2 sm:h-[695px] sm:shadow-[1px_1px_19px_1px_rgba(0,0,0,0.10)]">
+            <div className="flex min-h-[340px] m-auto justify-center items-start justify-items-center sm:h-full relative w-[80%]">
               {product?.imageUrl ? (
                 <Image
-                  src={product?.imageUrl}
-                  fill
+                  src={toggleSlashAsterisco(product.imageUrl)}
                   objectFit="contain"
                   alt="product description"
-                  sizes="100vw"
+                  fill={true}
+                  className="object-scale-down rounded-xl w-full"
                 ></Image>
               ) : null}
             </div>
@@ -97,24 +94,13 @@ const ProductDetails = ({ id }) => {
                       </h3>
                       <div>{/* icons */}</div>
                     </div>
+
                     <p className="text-12px font-[300] text-[#222]">
                       {product.description}
                     </p>
 
-                    {/* stock buttons
-                    <div className="flex justify-between">
-                      <StockButtons />
-                    </div>
-                    */}
-
-                    <div className="border-solid border-2 border-[#d1d1d1] w-28 mt-5 relative mb-5">
-                      <p className="absolute top-[-13px] left-[3px] bg-[#f8f8f8] px-2">
-                        Cantidad
-                      </p>
-                      <div className="flex justify-between items-center py-2 px-2">
-                        <p>1</p>
-                        <BsChevronDown />
-                      </div>
+                    <div className="w-24 mt-5">
+                      <QuantityButton />
                     </div>
 
                     <CallButton

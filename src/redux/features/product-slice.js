@@ -10,7 +10,7 @@ const initialState = {
   product: {},
   patchProduct: "",
   error: "",
-  loading:false,
+  loading: false,
 };
 export const fetchProducts = createAsyncThunk(
   "product/fetchProducts",
@@ -33,21 +33,46 @@ export const fetchProduct = createAsyncThunk(
 export const postProduct = createAsyncThunk(
   "product/postProduct",
   async (body) => {
+    const config = {
+      headers: { Authorization: `Bearer ${body.token}` },
+    };
+    function toggleSlashAsterisco(texto) {
+      if (texto.includes("/")) {
+        // Reemplazar todas las ocurrencias de "/" por "*"
+        const textoModificado = texto
+          .split("")
+          .map((c) => (c === "/" ? "*" : c))
+          .join("");
+        console.log(textoModificado);
+        return textoModificado;
+      } else if (texto.includes("*")) {
+        // Reemplazar todas las ocurrencias de "*" por "/"
+        const textoModificado = texto
+          .split("")
+          .map((c) => (c === "*" ? "/" : c))
+          .join("");
+        return textoModificado;
+      } else {
+        // Si no hay ni "/" ni "*", devolver el mismo texto
+        return texto;
+      }
+    }
+
     const product = {
       name: body.name,
       description: body.description,
-      highlight_date: body.highlighDate,
-      imageUrl: body.image,
+      highlight_date: body.highligh_date,
+      imageUrl: toggleSlashAsterisco(body.image),
       price: body.price,
       categoryId: body.categoryId,
     };
-    const res = await axios.post(
-      "https://dulcina-backend.onrender.com/products",
-      product,
-      {
-        headers: { Authorization: `Bearer ${body.token}` },
-      }
-    );
+    const res = await axios
+      .post("https://dulcina-backend.onrender.com/products", product, config)
+      .then((res) => {
+        console.log(product);
+        console.log("done mi pana");
+      })
+      .catch((err) => console.log(err.response.data));
     return res.data;
   }
 );
@@ -70,17 +95,26 @@ export const products = createSlice({
   initialState,
   reducers: {
     pSortProductsByPop: (state, action) => {
-      console.log("aja",action.payload);
+      console.log("aja", action.payload);
       return {
         ...state,
-        allProducts: action.payload?.slice().sort((a, b) => b.times_sold - a.times_sold),
+        allProducts: action.payload
+          ?.slice()
+          .sort((a, b) => b.times_sold - a.times_sold),
       };
     },
     pSortProductsByTime: (state, action) => {
-      console.log("aja",action.payload?.slice().sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)));
+      console.log(
+        "aja",
+        action.payload
+          ?.slice()
+          .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+      );
       return {
         ...state,
-        allProducts: action.payload?.slice().sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+        allProducts: action.payload
+          ?.slice()
+          .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)),
       };
     },
   },
@@ -121,11 +155,6 @@ export const products = createSlice({
 
 export const selectAllProducts = (state) => state.allProducts;
 
-
-
-export const {
-  pSortProductsByPop,
-  pSortProductsByTime
-} = products.actions;
+export const { pSortProductsByPop, pSortProductsByTime } = products.actions;
 
 export default products.reducer;

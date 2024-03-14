@@ -11,7 +11,7 @@ const Products = () => {
         <div className="min-h-screen">
           <div className=" text-black ">
             <UxProducts />
-            <div className="flex flex-col md:flex-row w-[90%] gap-3 mx-auto">
+            <div className="flex flex-col md:flex-row w-[95%] xl:w-[87%] gap-[2rem] xl:gap-[6.5rem] mx-auto">
               <Filters />
               <ListProducts />
             </div>

@@ -65,8 +65,8 @@ const Filters = () => {
         <Searchbar />
       </div>
 
-      <div className="w-[365px] hidden md:flex justify-end">
-        <div className="flex-col w-[280px] hidden md:flex">
+      <div className="hidden md:flex justify-end">
+        <div className="flex-col w-[200px] lg:w-[275px] hidden md:flex">
           {/* <h2 className="font-extrabold text-[#222222] text-[30px]">
             Festividad
           </h2>

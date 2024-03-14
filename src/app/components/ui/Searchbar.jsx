@@ -1,6 +1,6 @@
 "use client";
 import { changeSearchInput } from "@/redux/features/search-slice";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { HiOutlineSearch } from "react-icons/hi";
 import { useDispatch } from "react-redux";
@@ -16,14 +16,14 @@ const Searchbar = () => {
   const onSearch = (e) => {
     e.preventDefault();
     dispatch(changeSearchInput(input));
-    rout.push("/products");
+    redirect("/products");
 
     setInput("");
   };
   return (
     <>
       <form onSubmit={onSearch}>
-        <div className="flex pl-[20px] text-[#222222] pr-[20px] bg-[#f2f2f2] h-[35px] items-center justify-between rounded-3xl">
+        <div className="flex pl-[20px] ml-10 text-[#222222] md:min-w-[350px] pr-[20px] bg-[#f2f2f2] h-[35px] items-center justify-between rounded-3xl">
           <input
             className="bg-[#f2f2f2] focus:outline-none"
             placeholder={`Buscar...`}

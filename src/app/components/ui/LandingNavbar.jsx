@@ -3,6 +3,12 @@ import Link from "next/link";
 import { useState } from "react";
 import { AiOutlineHeart } from "react-icons/ai";
 import { CartButton, Searchbar } from ".";
+import { Lobster } from "next/font/google";
+const lobster = Lobster({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400"],
+});
 
 const LandingNavbar = () => {
   const [isShown, setIsShown] = useState(false);
@@ -12,7 +18,7 @@ const LandingNavbar = () => {
   return (
     <div className=" text-white grid grid-cols-2 md:grid-cols-[31%_69%] md:h-[70px] justify-center content-center md:px-[130px] p-2 z-40 ">
       <Link className="flex items-center" href="/">
-        <h1 className="text-bold text-3xl font-lobster">Dulcina</h1>
+        <h1 className={`text-bold text-3xl ${lobster.className}`}>Dulcina</h1>
       </Link>
       <div className="flex flex-row justify-around md:hidden">
         <button>

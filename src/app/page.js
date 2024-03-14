@@ -39,13 +39,11 @@ export default function Home() {
         </section>
       </LandingLayout>
 
-      <div className="sm:h-[700px]">
-        <div className="sm:h-[25%] " />
-
+      {/* <div>
         <Carrousel />
-      </div>
-      <div className="sm:h-[600px] ">
-        <div className="sm:h-[20%] " />
+      </div> */}
+      <div>
+        <div />
         <InfoSlider />
       </div>
       <IgSection />
