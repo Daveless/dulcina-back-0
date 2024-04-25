@@ -24,6 +24,15 @@ export default function RootLayout({ children }) {
             gtag('config', 'G-32V122543H');
           `}
         </Script>
+        <Script type="text/javascript">
+          {`
+            (function(c,l,a,r,i,t,y){
+           c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+          })(window, document, "clarity", "script", "m29v7h0dg2");
+          `}          
+        </Script>
       </head>
       <body className={`${inter.className}  bg-[#f8f8f8]`}>
         <ReduxProvider>
